@@ -1,5 +1,12 @@
 package com.semi.bookrep.dao;
 
-public interface UserDao {
+import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
+import com.semi.bookrep.dto.UserDTO;
+
+public interface UserDao {
+	@Select("SELECT count(*) FROM user")
+	int getUserCnt();
 }
