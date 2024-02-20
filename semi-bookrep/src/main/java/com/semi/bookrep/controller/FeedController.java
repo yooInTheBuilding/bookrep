@@ -32,7 +32,7 @@ public class FeedController {
 		List<ReportDao> sessionItems = feedService.getReportSummaryById(userEmail);
 
 		// 페이지 주인인 유저의 정보를 전달
-		model.addAttribute("userEmail", userEmail);;
+		model.addAttribute("userEmail", userEmail);
 
 		// 독후감 정보 추가
 		model.addAttribute("sessionItems", sessionItems);
@@ -46,6 +46,9 @@ public class FeedController {
 			model.addAttribute("isCurrentUser", false);
 			System.out.println("로그인유저!=페이지유저");
 		}
+		
+		// 모델에 잘 담겼는지 확인용
+		System.out.println("model = " + model);
 
 		if (userEmail != null) {
 			// 팔로워 수 출력
@@ -59,6 +62,7 @@ public class FeedController {
 			
 			// 잘 담겼나 확인용
 			System.out.println("model = " + model);
+			
 		} else {
 		    // userEmail이 null인 경우 처리
 		    System.out.println("userEmail이 null입니다.");
