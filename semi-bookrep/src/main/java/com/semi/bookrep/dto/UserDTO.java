@@ -15,7 +15,7 @@ public class UserDTO {
 	@NonNull
 	private String name;
 	
-	@NonNull
+	
 	private String image;
 	
 }
