@@ -31,7 +31,7 @@ public class HomeController {
 		HttpSession session = request.getSession(false);
 		
 	
-		if(session != null && session.getAttribute("loggedUser") != null) {
+		if(session != null && session.getAttribute("email") != null) {
 			// 로그인 정보(email값) 있음
 			return "redirect:/home2";
 		}else {

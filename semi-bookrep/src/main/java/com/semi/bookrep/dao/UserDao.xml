@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
   
 
 <mapper namespace="com.semi.bookrep.dao.UserDao">
@@ -16,3 +17,21 @@
 		WHERE user_name LIKE "%${keyword}%"  OR user_email LIKE "%${keyword}%" 
 	</select>
 </mapper>
+=======
+
+<mapper namespace="com.semi.bookrep.dao.UserDao">
+
+	<resultMap id="UserDTO" type="com.semi.bookrep.dto.UserDTO">
+		<result property="email" column="user_email" />
+		<result property="password" column="user_password" />
+		<result property="name" column="user_name" />
+		<result property="image" column="user_image" />
+	</resultMap>
+
+	<select id="signIn" resultMap="UserDTO">
+		SELECT * FROM user WHERE email
+		= #{user_email} AND password = #{user_password}
+	</select>
+
+</mapper>
+>>>>>>> 481554b (home screen logic 1)
