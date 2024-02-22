@@ -11,11 +11,9 @@ public interface UserDao {
 	@Select("SELECT count(*) FROM user")
 	int getUserCnt();
 	
-<<<<<<< HEAD
 	List<UserDTO> getUserList(String keyword);
-=======
+	
 	boolean signIn(String email, String password);
->>>>>>> 481554b (home screen logic 1)
 
 	
 }

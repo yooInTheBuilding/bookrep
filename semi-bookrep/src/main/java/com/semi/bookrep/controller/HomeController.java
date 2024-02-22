@@ -1,16 +1,22 @@
 package com.semi.bookrep.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 import com.semi.bookrep.dao.UserDao;
+import com.semi.bookrep.dto.ReportDTO;
+import com.semi.bookrep.dto.UserDTO;
+import com.semi.bookrep.service.HomeService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,23 +29,23 @@ public class HomeController {
 	@Autowired
 	private UserDao userDao;
 	
-<<<<<<< HEAD
-=======
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
->>>>>>> eea76030249a0a2c88c26a7886d56e7ea83fbaee
+	@Autowired
+	private HomeService homeService;
+	
+	
 	@GetMapping("/")
-	public String home(HttpServletRequest request) {
+	public String home(HttpServletRequest request, Model model) {
 		int cnt = userDao.getUserCnt();
 		System.out.println(cnt);
 		
 		HttpSession session = request.getSession(false);
 		
-	
-<<<<<<< HEAD
 		if(session != null && session.getAttribute("email") != null) {
-=======
-		if(session != null && session.getAttribute("loggedUser") != null) {
->>>>>>> eea76030249a0a2c88c26a7886d56e7ea83fbaee
+
+//			List<ReportDTO> reportList = userDao.getReportToHome();
+			
+			
+			
 			// 로그인 정보(email값) 있음
 			return "redirect:/home2";
 		}else {

@@ -38,7 +38,7 @@ public class SignController {
 		if(loginResult) {
 			log.info("로그인 성공");
 			request.getSession().setAttribute("email", email);
-			return "redirect:/home2.jsp";
+			return "redirect:home2";
 			
 		} else {
 			log.info("로그인 실패");
