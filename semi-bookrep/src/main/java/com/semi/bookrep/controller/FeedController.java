@@ -4,16 +4,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.semi.bookrep.dao.ReportDao;
+import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.service.FeedService;
 import com.semi.bookrep.service.FollowService;
 
 import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @Slf4j
@@ -27,9 +29,14 @@ public class FeedController {
 
 		// 세션에서 현재 로그인한 사용자 이메일 가져옴.
 		String loggedInUserEmail = (String) session.getAttribute("userEmail");
-
+		
+		if (userEmail == null) {
+			userEmail = "aaa@aaa.com";
+			log.info("유저 이메일 null이기에 임의의 aaa@aaa.com 이메일 부여");
+		}
+		
 		// 매개변수인 userEmail을 사용해서 해당 유저의 독후감 정보를 가져옴.
-		List<ReportDao> sessionItems = feedService.getReportSummaryById(userEmail);
+		List<PageDTO> sessionItems = feedService.getReportSummaryById(userEmail);
 
 		// 페이지 주인인 유저의 정보를 전달
 		model.addAttribute("userEmail", userEmail);
@@ -41,31 +48,33 @@ public class FeedController {
 		if (loggedInUserEmail != null && loggedInUserEmail.equals(userEmail)) {
 			// 같은 경우 로그인한 사용자의 추가 정보를 모델에 추가
 			model.addAttribute("isCurrentUser", true);
-			System.out.println("로그인유저==페이지유저");
+			log.info("로그인유저==페이지유저");
 		} else {
 			model.addAttribute("isCurrentUser", false);
-			System.out.println("로그인유저!=페이지유저");
+			log.info("로그인유저!=페이지유저");
 		}
 		
 		// 모델에 잘 담겼는지 확인용
-		System.out.println("model = " + model);
+		log.info("model = " + model);
 
 		if (userEmail != null) {
 			// 팔로워 수 출력
 			int followerCnt = followService.getFollowerValueById(userEmail);
 			System.out.println(followerCnt);
 			model.addAttribute("followerCnt", followerCnt);
-
 			// 팔로잉 수 출력
 			int followingCnt = followService.getFollowingValueById(userEmail);
 			model.addAttribute("followingCnt", followingCnt);
+			System.out.println(followingCnt);
 			
 			// 잘 담겼나 확인용
-			System.out.println("model = " + model);
+			log.info("model = " + model);
 			
-		} else {
+		}else if(userEmail == "aaa@aaa.com") {
+			log.info("확인용 임시 이메일입ㄴ디ㅏ.");
+		}else {
 		    // userEmail이 null인 경우 처리
-		    System.out.println("userEmail이 null입니다.");
+			log.info("userEmail이 null입니다.");
 		}
 
 		return "feed";
