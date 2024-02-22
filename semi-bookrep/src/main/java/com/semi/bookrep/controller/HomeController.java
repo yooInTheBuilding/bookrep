@@ -23,7 +23,6 @@ public class HomeController {
 	@Autowired
 	private UserDao userDao;
 	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("/")
 	public String home(HttpServletRequest request) {
 		int cnt = userDao.getUserCnt();
