@@ -6,10 +6,11 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-public class PageDTO {
+public class PageDTO<T> {
 	@NonNull
 	private int pageNum;
 	
 	@NonNull
-	private List<Object> objectList;
+	private List<T> objectList;
+
 }
