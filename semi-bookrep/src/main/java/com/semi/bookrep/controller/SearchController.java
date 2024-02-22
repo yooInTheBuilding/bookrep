@@ -35,8 +35,8 @@ public class SearchController {
 		for (int i = 0; i < bookList.size(); i++) {
 			log.info(bookList.get(i).getName());
 		}
-		List<PageDTO> userPageList = MainUtil.setPaging(userList);
-		List<PageDTO> bookPageList = MainUtil.setPaging(bookList);
+		List<PageDTO> userPageList = MainUtil.setPaging(userList, 5);
+		List<PageDTO> bookPageList = MainUtil.setPaging(bookList, 5);
 		model.addAttribute("userList", userPageList);
 		model.addAttribute("bookList", bookPageList);
 		return "search";
