@@ -27,6 +27,10 @@ header {
 .header .logo img {
 	width: 40px;
 	align-items: center;
+<<<<<<< HEAD
+=======
+	padding-left: 250px;
+>>>>>>> eea76030249a0a2c88c26a7886d56e7ea83fbaee
 }
 
 .header .profile {
@@ -65,6 +69,17 @@ header {
 	border-radius: 5px;
 }
 
+<<<<<<< HEAD
+=======
+/* .header .search-box button.search {
+  padding: 8px 12px; 
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+} */
+>>>>>>> eea76030249a0a2c88c26a7886d56e7ea83fbaee
 .mainLogo img {
 	padding-left: 460px;
 	width: 1000px;

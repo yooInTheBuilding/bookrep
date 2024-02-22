@@ -23,6 +23,10 @@ public class HomeController {
 	@Autowired
 	private UserDao userDao;
 	
+<<<<<<< HEAD
+=======
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+>>>>>>> eea76030249a0a2c88c26a7886d56e7ea83fbaee
 	@GetMapping("/")
 	public String home(HttpServletRequest request) {
 		int cnt = userDao.getUserCnt();
@@ -31,7 +35,11 @@ public class HomeController {
 		HttpSession session = request.getSession(false);
 		
 	
+<<<<<<< HEAD
 		if(session != null && session.getAttribute("email") != null) {
+=======
+		if(session != null && session.getAttribute("loggedUser") != null) {
+>>>>>>> eea76030249a0a2c88c26a7886d56e7ea83fbaee
 			// 로그인 정보(email값) 있음
 			return "redirect:/home2";
 		}else {
