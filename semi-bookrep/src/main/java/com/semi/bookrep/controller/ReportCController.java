@@ -47,7 +47,11 @@ public class ReportCController {
 	@GetMapping("apply")
 	public String applyBookSearch(RedirectAttributes rttr, BookDTO bookDTO) {
 		log.info("applyBookSearch()");
+<<<<<<< Updated upstream
 		reportCService.saveBook(bookDTO);
+=======
+		
+>>>>>>> Stashed changes
 		rttr.addFlashAttribute("book", bookDTO);
 		return "redirect:write";
 	}

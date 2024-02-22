@@ -9,14 +9,18 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.semi.bookrep.APIKEY;
 import com.semi.bookrep.dao.ReportDao;
 import com.semi.bookrep.dto.BookDTO;
+import com.semi.bookrep.dto.ReportDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -55,6 +59,31 @@ public class ReportCService {
 		}
 		
 		return bookList;
+	}
+	
+	public String setReport(HttpSession session, ReportDTO reportDTO, RedirectAttributes rttr) {
+		log.info("setReport()");
+		
+		String msg = null;
+		String view = null;
+		if (session.getAttribute("email") == null) {
+			msg = "로그인 후 이용하세요";
+			view = "redirect:sign-in";
+		}else {
+			try {
+				reportDao.setReport(reportDTO);
+				msg = "작성 성공";
+				view = "redirect:showFeed/" + session.getAttribute("email");
+			} catch (Exception e) {
+				e.printStackTrace();
+				msg = "빈 칸이 없도록 다시 작성하세요";
+				view = "redirect:write";
+			}
+		}
+		
+		rttr.addFlashAttribute(msg);
+	
+		return view;
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -102,5 +131,7 @@ public class ReportCService {
 			
 		}
 	}
+
+	
 
 }

@@ -1,5 +1,6 @@
 package com.semi.bookrep.util;
 
+<<<<<<< Updated upstream
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,3 +30,18 @@ public class MainUtil {
 		return pageDTOList;
 	}
 }
+=======
+import java.util.List;
+
+import com.semi.bookrep.dto.PageDTO;
+import com.semi.bookrep.dto.UserDTO;
+
+public class MainUtil {
+
+	public static <T> List<PageDTO> setPaging(List<T> objectList, int maxCnt) {
+		
+		return null;
+	}
+
+}
+>>>>>>> Stashed changes
