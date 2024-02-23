@@ -1,9 +1,13 @@
 package com.semi.bookrep.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookDTO {
 
 	@NonNull

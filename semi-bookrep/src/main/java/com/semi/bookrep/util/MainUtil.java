@@ -8,7 +8,6 @@ import com.semi.bookrep.dto.PageDTO;
 public class MainUtil {
 	private static int maxNum=0;
 	
-	// 매개변수인 maxCnt는  메인 디스플레이에 표시되는 콘텐츠 개수
 	@SuppressWarnings("rawtypes")
 	public static <T> List<PageDTO> setPaging(List<T> objectList, int maxCnt){
 		if (objectList.size() % maxCnt == 0) {
@@ -30,3 +29,4 @@ public class MainUtil {
 		return pageDTOList;
 	}
 }
+
