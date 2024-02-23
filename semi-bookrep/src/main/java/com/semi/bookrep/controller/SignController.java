@@ -30,28 +30,19 @@ public class SignController {
 	
 	// 로그인 로직
 	@PostMapping("sign-in")
-	public String signIn(HttpServletRequest request, @RequestParam String email, @RequestParam String password) {
+	public String signIn(HttpSession session, @RequestParam String email, @RequestParam String password) {
 		log.info("email:{}, pw:{}", email, password);
 		
-		boolean loginResult = signService.signIn(email, password);
+		String view = signService.signIn(session, email, password);
 		
-		if(loginResult) {
-			log.info("로그인 성공");
-			request.getSession().setAttribute("email", email);
-			return "redirect:home2";
-			
-		} else {
-			log.info("로그인 실패");
-			return "signIn";
-		}
-		
+		return view;
 	}
 	
 	@GetMapping("sign-out")
 	public String signOut(HttpSession session) {
 		session.invalidate();
 		log.info("로그아웃");
-		return "redirect:/home1.jsp";
+		return "home1";
 	}
 	
 	

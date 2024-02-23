@@ -15,15 +15,5 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HomeService {
 
-	@Autowired
-	private UserDTO userDTO;
 	
-	
-	public String getReportToHome(UserDTO user){
-		log.info("getReportToHome()");
-		
-		
-		
-		return "home2";
-	}
 }
