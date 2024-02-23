@@ -1,6 +1,9 @@
 package com.semi.bookrep.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +38,9 @@ public class SearchController {
 		for (int i = 0; i < bookList.size(); i++) {
 			log.info(bookList.get(i).getName());
 		}
+		@SuppressWarnings("rawtypes")
 		List<PageDTO> userPageList = MainUtil.setPaging(userList, 5);
+		@SuppressWarnings("rawtypes")
 		List<PageDTO> bookPageList = MainUtil.setPaging(bookList, 5);
 		model.addAttribute("userList", userPageList);
 		model.addAttribute("bookList", bookPageList);

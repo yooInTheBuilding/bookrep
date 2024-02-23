@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.semi.bookrep.APIKEY;
+import com.semi.bookrep.dao.BookDao;
 import com.semi.bookrep.dao.ReportDao;
 import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.ReportDTO;
@@ -30,6 +31,9 @@ public class ReportCService {
 	
 	@Autowired
 	private ReportDao reportDao;
+	
+	@Autowired
+	private BookDao bookDao;
 
 	public List<BookDTO> getBookByAPI(String keyword) throws IOException, InterruptedException {
 		log.info("getBookByAPI()");
@@ -61,6 +65,13 @@ public class ReportCService {
 		return bookList;
 	}
 	
+	public void saveBook(BookDTO bookDTO) {
+		log.info("saveBook()");
+		
+		bookDao.saveBook(bookDTO);
+		
+	}
+	
 	public String setReport(HttpSession session, ReportDTO reportDTO, RedirectAttributes rttr) {
 		log.info("setReport()");
 		
@@ -87,7 +98,7 @@ public class ReportCService {
 	}
 	
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public class NaverBook{
+	public static class NaverBook{
 		private List<Item> items;
 		
 		
@@ -97,7 +108,7 @@ public class ReportCService {
 
 
 		@JsonIgnoreProperties(ignoreUnknown = true)
-		public class Item{
+		public static class Item{
 			
 			private String title;
 			

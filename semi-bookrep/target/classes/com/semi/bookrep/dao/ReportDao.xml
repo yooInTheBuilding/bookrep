@@ -4,6 +4,7 @@
   
 <mapper namespace="com.semi.bookrep.dao.ReportDao">
 	<insert id="setReport" parameterType="com.semi.bookrep.dto.ReportDTO">
-	
+		INSERT report (report_user_email, report_book_isbn, report_title, report_content, report_public, report_time)
+		VALUES (#{userEmail}, #{bookIsbn}, #{title}, #{content}, #{publicBool}, #{time})
 	</insert>
 </mapper>

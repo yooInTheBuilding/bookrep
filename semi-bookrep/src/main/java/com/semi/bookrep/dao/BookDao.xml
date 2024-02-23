@@ -16,4 +16,10 @@
 		WHERE (book_name LIKE '%${keyword}%' ) OR (book_author LIKE '%${keyword}%' )
 	</select>
 	
+	<insert id="saveBook" parameterType="com.semi.bookrep.dto.BookDTO">
+		INSERT book 
+		(book_name, book_author, book_publisher, book_isbn, book_image) 
+		VALUES (#{name}, #{author}, #{publisher}, #{isbn}, #{image})
+	</insert>
+	
 </mapper>

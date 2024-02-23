@@ -1,51 +1,35 @@
 package com.semi.bookrep;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.semi.bookrep.dto.BookDTO;
-import com.semi.bookrep.service.ReportCService.NaverBook;
+import com.semi.bookrep.service.ReportCService;
 
-public class NaverApiTest {
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
+class NaverApiTest {
 
+	@Autowired
+	private ReportCService reportCService;
+	
 	@Test
 	public void test() throws IOException, InterruptedException {
-		HttpClient client = HttpClient.newHttpClient();
-		String url = "https://openapi.naver.com/v1/search/book.json"
-				+ "?query=" + URLEncoder.encode("¾Ë¶óµò", "UTF-8")
-				+ "&display=100";
-		HttpRequest request = HttpRequest.newBuilder()
-				.header("X-Naver-Client-Id", APIKEY.ID)
-				.header("X-Naver-Client-Secret", APIKEY.SECRET)
-				.uri(URI.create(url))
-				.GET()
-				.build();
-		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-		String responseBody = response.body();
-		NaverBook naverBook = new ObjectMapper().readValue(responseBody, NaverBook.class);
-		List<NaverBook.Item> items = naverBook.getItems();
-		List<BookDTO> bookList = new ArrayList<BookDTO>();
-		try {
-			for (NaverBook.Item item : items) {
-				BookDTO bookDTO = new BookDTO(item.getTitle(), item.getAuthor(), item.getPublisher(), item.getIsbn(), item.getImage());
-				bookList.add(bookDTO);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		List<BookDTO> bookList = reportCService.getBookByAPI("½Å");
 		for (BookDTO bookDTO : bookList) {
-			System.out.println(bookDTO.getName());
+			System.out.println("name: " + bookDTO.getName());
+			System.out.println("author: " + bookDTO.getAuthor());
+			System.out.println("publisher: " + bookDTO.getPublisher());
+			System.out.println("isbn: " + bookDTO.getIsbn());
+			System.out.println("image: " + bookDTO.getImage());
 		}
 	}
-
 }
