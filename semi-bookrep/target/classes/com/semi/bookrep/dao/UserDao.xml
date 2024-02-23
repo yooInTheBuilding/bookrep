@@ -15,4 +15,8 @@
 		FROM user 
 		WHERE user_name LIKE "%${keyword}%"  OR user_email LIKE "%${keyword}%" 
 	</select>
+	<select id="signIn" resultMap="UserDTO">
+		SELECT * FROM user WHERE email
+		= #{user_email} AND password = #{user_password}
+	</select>
 </mapper>

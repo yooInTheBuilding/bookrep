@@ -12,6 +12,8 @@ public interface UserDao {
 	int getUserCnt();
 	
 	List<UserDTO> getUserList(String keyword);
+	
+	boolean signIn(String email, String password);
 
 	
 }
