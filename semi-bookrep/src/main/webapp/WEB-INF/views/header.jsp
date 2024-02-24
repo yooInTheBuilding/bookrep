@@ -37,7 +37,7 @@
 							</form>
 						</div>
 						<div class="logout-button">
-							<a href="/bookrep/logout"><button>로그아웃</button></a>
+							<a href="/bookrep/sign-out"><button>로그아웃</button></a>
 						</div>
 					</c:otherwise>
 				</c:choose>

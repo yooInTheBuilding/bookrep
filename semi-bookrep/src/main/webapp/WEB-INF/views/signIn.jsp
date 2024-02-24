@@ -17,22 +17,24 @@
 
 				<h1>SignIn</h1>
 
-				<p>
-				<div class="int-area">
-					<input type="text" name="user_email" id="email" autocomplete="off"
-						placeholder="Email" required>
-				</div>
+				<form action="/bookrep/sign-in" method="post">
+					<p>
+					<div class="int-area">
+						<input type="text" name="email" id="email" autocomplete="off"
+							placeholder="Email" required>
+					</div>
 
-				<p>
-				<div class="int-area">
-					<input type="password" name="user_password" id="pw"
-						autocomplete="off" placeholder="Password" required>
-				</div>
+					<p>
+					<div class="int-area">
+						<input type="password" name="password" id="password"
+							autocomplete="off" placeholder="password" required>
+					</div>
 
-				<p>
-				<div class="login-page-button">
-					<button>Login</button>
-				</div>
+					<p>
+					<div class="login-page-button">
+						<button>Login</button>
+			</div>
+				</form>
 
 				<h5>or</h5>
 
