@@ -2,6 +2,7 @@ package com.semi.bookrep.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.semi.bookrep.dto.BookDTO;
@@ -13,7 +14,7 @@ public interface UserDao {
 	
 	List<UserDTO> getUserList(String keyword);
 	
-	boolean signIn(String email, String password);
+	boolean signIn(@Param("email") String email, @Param("password") String password);
 
 	
 }

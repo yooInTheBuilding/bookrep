@@ -23,8 +23,13 @@ public class HomeController {
 	private HomeService homeService;
 	
 	@GetMapping("/")
+	public String main() {
+		return "home1";
+	}
+	
+	@GetMapping("/home")
 	public String home() {
-		log.info("home1 화면 출력()");
+		log.info("home 화면 출력()");
 		return "home1";
 	}
 	

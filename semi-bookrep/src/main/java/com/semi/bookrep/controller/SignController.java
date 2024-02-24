@@ -1,12 +1,12 @@
 package com.semi.bookrep.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.semi.bookrep.service.SignService;
@@ -34,7 +34,7 @@ public class SignController {
 		log.info("email:{}, pw:{}", email, password);
 		
 		String view = signService.signIn(session, email, password);
-		
+		log.info(view);
 		return view;
 	}
 	
@@ -42,7 +42,7 @@ public class SignController {
 	public String signOut(HttpSession session) {
 		session.invalidate();
 		log.info("로그아웃");
-		return "home1";
+		return "redirect:/home";
 	}
 	
 	
