@@ -20,4 +20,8 @@
 	<select id="getReportDetailByReportId" parameterType="java.lang.Long" resultMap="ReportDTO">
 		SELECT * FROM report WHERE report_id = ${id}
 	</select>
+	
+	<delete id="deleteReportByReportId" parameterType="java.lang.Long">
+		DELETE FROM report WHERE report_id = ${id}
+	</delete>
 </mapper>
