@@ -53,7 +53,7 @@ class ReportCTest {
 		httpSession.setAttribute("email", "ing06047");
 		ReportDTO reportDTO = new ReportDTO();
 		reportDTO.setTitle("독후감" + generatedString);
-		reportDTO.setBookIsbn("1");
+		reportDTO.setBookIsbn("isbn어쩌구");
 		reportDTO.setContent("내용" + generatedString);
 		reportDTO.setUserEmail("ing06047");
 		reportDTO.setPublicBool(false);

@@ -3,5 +3,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.semi.bookrep.dao.CommentDao">
+	<resultMap type="com.semi.bookrep.dto.CommentDTO" id="CommentDTO">
+		  <result property="id" column="comment_id" />
+		  <result property="userEmail" column="comment_user_email" />
+		  <result property="reportId" column="comment_report_id" />
+		  <result property="content" column="comment_content" />
+		  <result property="time" column="comment_time" />
+	</resultMap>
+
+	<select id="getCommentByReportId" parameterType="java.lang.Long" resultMap="CommentDTO">
+		SELECT * FROM comment WHERE comment_report_id = ${id}
+	</select>
 	
+	<insert id="setComment" parameterType="com.semi.bookrep.dto.CommentDTO">
+		INSERT comment (comment_user_email, comment_report_id, comment_content) VALUES (#{userEmail}, ${reportId}, #{content})
+	</insert>
 </mapper>

@@ -7,4 +7,6 @@ public interface ReportDao {
 	
 	void setReport(ReportDTO reportDTO);
 
+	ReportDTO getReportDetailByReportId(Long id);
+
 }
