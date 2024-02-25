@@ -16,5 +16,7 @@ public interface UserDao {
 	
 	boolean signIn(@Param("email") String email, @Param("password") String password);
 
+	String signUp(String email, String password, String name);
+
 	
 }

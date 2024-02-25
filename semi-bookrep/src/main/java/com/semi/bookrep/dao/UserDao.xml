@@ -25,5 +25,7 @@
 		WHERE user_email = #{email} AND user_password = #{password}
 	</select>
 	
-	
+	<insert id="signUp" parameterType="String">
+		INSERT INTO user (user_email, user_password, user_name) VALUES(#{email}, #{password}, #{name})
+	</insert>
 </mapper>

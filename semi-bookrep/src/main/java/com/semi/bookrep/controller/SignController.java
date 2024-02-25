@@ -38,12 +38,30 @@ public class SignController {
 		return view;
 	}
 	
+	// 로그아웃 로직
 	@GetMapping("sign-out")
 	public String signOut(HttpSession session) {
 		session.invalidate();
 		log.info("로그아웃");
-		return "redirect:/home";
+		return "home1";
 	}
+	
+	// 회원가입 로직
+	@GetMapping("sign-up")
+	public String showSignUp() {
+		log.info("회원가입 화면 이동");
+		return "signUp";
+	}
+	
+	@PostMapping("sign-up")
+	public String signUp(@RequestParam String email, @RequestParam String password, @RequestParam String name) {
+		log.info("email:{}, pw:{}, name{}", email, password, name);
+		
+		String view = signService.signUp(email, password, name);
+		log.info(view);
+		return view;
+	}
+	
 	
 	
 }

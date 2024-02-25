@@ -31,4 +31,8 @@ public class SignService {
 		
 	}
 
+	public String signUp(String email, String password, String name) {
+		return userDao.signUp(email, password, name);
+	}
+
 }

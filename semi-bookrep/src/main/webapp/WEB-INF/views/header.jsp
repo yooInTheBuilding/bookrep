@@ -14,9 +14,20 @@
 	<header>
 		<div class="header">
 			<div class="profile">
-				<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"
-					onclick="return moveToFeed()"></i>
+				<c:choose>
+					<c:when test="${not empty sessionScope.email}">
+						<a href="/bookrep/feed"><i class="fa fa-user-circle-o fa-2x"
+							aria-hidden="true"></i></a>
+						<!-- </div> -->
+					</c:when>
+					<c:otherwise>
+						<!-- <div class="profile"> -->
+						<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+			</c:otherwise>
+			</c:choose>
 			</div>
+
+
 			<div class="logo">
 				<img src="resources/images/bookrepLogo.png" alt="로고"
 					onclick="return moveToHome()">
@@ -51,9 +62,20 @@
 		var email = "${sessionScope.email}";
 		
 		if(email != null) {
-			window.location.href = "/bookrep/"
+			location.href = "/bookrep/home";
 		} else {
-			window.location.href = "/bookrep/home"
+			location.href = "/bookrep/";
+		}
+	}
+	
+	const moveToFeed = () => {
+		
+		var email1 = "${sessionScope.email}";
+		
+		if(email1 != null){
+			location.href = "/bookrep/feed";
+		} else {
+			alert = "로그인 후 이용해주세요.";
 		}
 	}
 </script>

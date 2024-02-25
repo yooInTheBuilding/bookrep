@@ -33,7 +33,7 @@
 					<p>
 					<div class="login-page-button">
 						<button>Login</button>
-			</div>
+			</div> 
 				</form>
 
 				<h5>or</h5>
@@ -48,7 +48,7 @@
 		<fieldset>
 			<div class="sign-up-link">
 				<p>
-					Don't have an account? <a href="/bookrep/find-password">Sign Up</a>
+					Don't have an account? <a href="/bookrep/sign-up">Sign Up</a>
 				<p>
 			</div>
 		</fieldset>

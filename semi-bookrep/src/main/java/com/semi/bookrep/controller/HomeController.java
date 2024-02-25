@@ -37,10 +37,9 @@ public class HomeController {
 	public String home(HttpSession session) {
 		
 		String email = (String) session.getAttribute("email");
-		
+
 		if(email != null) {
-			log.info("home2 출력() ");
-			return "redirect:/home";
+			return "home2";
 		} else {
 			return "home1";
 		}
