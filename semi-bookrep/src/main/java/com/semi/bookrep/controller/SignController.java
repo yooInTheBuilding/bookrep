@@ -42,7 +42,7 @@ public class SignController {
 	public String signOut(HttpSession session) {
 		session.invalidate();
 		log.info("로그아웃");
-		return "redirect:/home";
+		return "home1";
 	}
 	
 	
