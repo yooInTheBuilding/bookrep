@@ -9,4 +9,6 @@ public interface ReportDao {
 
 	ReportDTO getReportDetailByReportId(Long id);
 
+	void deleteReportByReportId(Long id);
+
 }
