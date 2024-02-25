@@ -28,7 +28,7 @@ public class ReportDTO {
 	
 	private boolean publicBool;
 	
-	private LocalDateTime time = LocalDateTime.now();
+	private LocalDateTime time;
 	
 
 }

@@ -4,7 +4,20 @@
   
 <mapper namespace="com.semi.bookrep.dao.ReportDao">
 	<insert id="setReport" parameterType="com.semi.bookrep.dto.ReportDTO">
-		INSERT report (report_user_email, report_book_isbn, report_title, report_content, report_public, report_time)
-		VALUES (#{userEmail}, #{bookIsbn}, #{title}, #{content}, #{publicBool}, #{time})
+		INSERT report (report_user_email, report_book_isbn, report_title, report_content, report_public)
+		VALUES (#{userEmail}, #{bookIsbn}, #{title}, #{content}, #{publicBool})
 	</insert>
+	<resultMap type="com.semi.bookrep.dto.ReportDTO" id="ReportDTO">
+	    <result property="id" column="report_id" />
+	    <result property="userEmail" column="report_user_email" />
+	    <result property="bookIsbn" column="report_book_isbn" />
+	    <result property="title" column="report_title" />
+	    <result property="content" column="report_content" />
+	    <result property="publicBool" column="report_public" />
+	    <result property="time" column="report_time" />
+	</resultMap>
+
+	<select id="getReportDetailByReportId" parameterType="java.lang.Long" resultMap="ReportDTO">
+		SELECT * FROM report WHERE report_id = ${id}
+	</select>
 </mapper>

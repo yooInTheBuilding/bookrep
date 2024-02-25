@@ -92,7 +92,7 @@ public class ReportCService {
 			}
 		}
 		
-		rttr.addFlashAttribute(msg);
+		//rttr.addFlashAttribute(msg);
 	
 		return view;
 	}
