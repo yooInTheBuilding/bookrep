@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.semi.bookrep.dao.BookDao;
 import com.semi.bookrep.dao.ReportDao;
+import com.semi.bookrep.dao.UserDao;
 import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.dto.ReportDTO;
@@ -28,6 +29,9 @@ public class FeedService {
 	
 	@Autowired
 	ReportRService reportRService;
+	
+	@Autowired
+	UserDao userDao;
 
 	public List<PageDTO> getReportSummaryById(String userEmail) {
 
@@ -87,5 +91,11 @@ public class FeedService {
 		int reportValue = userReports.size();
 		
 		return reportValue;
+	}
+
+	public String getUserImage(String userEmail) {
+		String userImage = userDao.getUserImage(userEmail);
+		
+		return userImage;
 	}
 }
