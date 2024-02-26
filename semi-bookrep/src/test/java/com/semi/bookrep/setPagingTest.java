@@ -30,9 +30,7 @@ public class setPagingTest {
 		try {
 			System.out.println("됬나?");
 			for (int i = 0; i < testResultList.size(); i++) {
-				System.out.println(testResultList.get(i).getObjectList());
 				System.out.println(testResultList.get(i).getPageNum());
-				System.out.println("---------------------");
 			}
 			
 		} catch (Exception e) {
