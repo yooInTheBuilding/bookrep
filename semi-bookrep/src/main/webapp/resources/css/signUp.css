@@ -8,7 +8,6 @@ a {
 	color: #918981;
 }
 
-
 fieldset {
 	border-radius: 5px;
 }
@@ -30,15 +29,16 @@ fieldset {
 	padding: 10% 40%
 }
 
-.check-box {
-	width: 25px;
-}
-
 .check-btn {
 	padding: 0;
 	border: #f5f5f5;
+	width: 25px;
 }
 
 .sign-in-box {
 	padding: 15px 0px;
+}
+
+.email-check {
+	font-size: 12px;
 }

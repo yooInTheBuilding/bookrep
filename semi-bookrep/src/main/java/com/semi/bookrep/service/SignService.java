@@ -4,8 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.semi.bookrep.dao.UserDao;
+import com.semi.bookrep.dto.UserDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +23,10 @@ public class SignService {
 		
 		if(loginResult) {
 			log.info("로그인 성공");
-			session.setAttribute("email", email);
+			
+			UserDTO userDTO = userDao.getUserByEmail(email);
+			session.setAttribute("loggedEmail", userDTO);
+			
 			return "redirect:/home";
 			
 		} else {
@@ -32,7 +37,17 @@ public class SignService {
 	}
 
 	public String signUp(String email, String password, String name) {
-		return userDao.signUp(email, password, name);
+		
+		boolean joinResult = userDao.signUp(email, password, name); 
+		
+		if(joinResult) {
+			log.info("회원가입 성공");
+			return "home1";
+		} else {
+			log.info("회원가입 실패");
+			return "signUp";
+		}
 	}
+
 
 }

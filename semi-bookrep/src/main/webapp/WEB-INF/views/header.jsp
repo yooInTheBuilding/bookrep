@@ -15,7 +15,7 @@
 		<div class="header">
 			<div class="profile">
 				<c:choose>
-					<c:when test="${not empty sessionScope.email}">
+					<c:when test="${not empty sessionScope.loggedEmail}">
 						<a href="/bookrep/feed"><i class="fa fa-user-circle-o fa-2x"
 							aria-hidden="true"></i></a>
 						<!-- </div> -->
@@ -34,7 +34,7 @@
 			</div>
 			<div class="buttons">
 				<c:choose>
-					<c:when test="${empty sessionScope.email}">
+					<c:when test="${empty sessionScope.loggedEmail}">
 						<div class="login-button">
 							<a href="/bookrep/sign-in"><button>로그인</button></a>
 						</div>
@@ -59,7 +59,7 @@
 <script>
 	const moveToHome = () => {
 
-		var email = "${sessionScope.email}";
+		var email = "${sessionScope.loggedEmail}";
 		
 		if(email != null) {
 			location.href = "/bookrep/home";
@@ -70,7 +70,7 @@
 	
 	const moveToFeed = () => {
 		
-		var email1 = "${sessionScope.email}";
+		var email1 = "${sessionScope.loggedEmail}";
 		
 		if(email1 != null){
 			location.href = "/bookrep/feed";

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.ui.Model;
 
 import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.UserDTO;
@@ -16,7 +17,9 @@ public interface UserDao {
 	
 	boolean signIn(@Param("email") String email, @Param("password") String password);
 
-	String signUp(String email, String password, String name);
+	boolean signUp(@Param("email") String email, @Param("password") String password, @Param("name") String name);
+
+	UserDTO getUserByEmail(@Param("email") String email);
 
 	
 }

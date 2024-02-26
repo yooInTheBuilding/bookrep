@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+body {
+	background-color: #f5f5f5;
+}
+
+h1 {
+	text-align: center;
+}
+
+fieldset {
+	border-radius: 5px;
+}
+
+.btn-box button {
+	padding: 1% 16%;
+	background-color: #918981;
+	border: solid 1px #918981;
+	border-radius: 5px;
+	font-size: 20px;
+	background-color: #918981;
+}
+
+.update-frm {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.input-1 {
+	width: 80%;
+}
+
+.input-2 {
+	width: 85%;
+}
+
+.input-3 {
+	width: 76%;
+}
+
+.input-4 {
+	width: 65%;
+}
+
+.enter-area label {
+	display: inline-block;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+.real-out-line {
+	padding: 10% 40%
+}

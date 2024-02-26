@@ -28,4 +28,10 @@
 	<insert id="signUp" parameterType="String">
 		INSERT INTO user (user_email, user_password, user_name) VALUES(#{email}, #{password}, #{name})
 	</insert>
+	
+	<select id="getUserByEmail" resultMap="UserDTO">
+		SELECT *
+		FROM user 
+		WHERE user_email = #{email}
+	</select>
 </mapper>
