@@ -23,7 +23,7 @@ class ReportRTest {
 
 	@Test
 	void getReportDetailByReportIdTest() {
-		ReportDTO reportDTO = reportRService.getReportDetailByReportId(3L);
+		ReportDTO reportDTO = reportRService.getReportDetailByReportId(4L);
 		System.out.println("title: " + reportDTO.getTitle());
 		System.out.println("content: " + reportDTO.getContent());
 	}

@@ -36,9 +36,9 @@ class ReportCTest {
 		new Random().nextBytes(array);
 		String generatedString = new String(array, Charset.forName("UTF-8"));
 		BookDTO bookDTO = new BookDTO();
-		bookDTO.setName("Ã¥" + generatedString);
-		bookDTO.setAuthor("ÀúÀÚ" + generatedString);
-		bookDTO.setPublisher("ÃâÆÇ»ç" + generatedString);
+		bookDTO.setName("ì±…" + generatedString);
+		bookDTO.setAuthor("ì €ì" + generatedString);
+		bookDTO.setPublisher("ì¶œíŒì‚¬" + generatedString);
 		bookDTO.setIsbn("isbn" + generatedString);
 		bookDTO.setImage("image" + generatedString);
 		reportCService.saveBook(bookDTO);
@@ -52,9 +52,9 @@ class ReportCTest {
 		HttpSession httpSession = new MockHttpSession();
 		httpSession.setAttribute("email", "ing06047");
 		ReportDTO reportDTO = new ReportDTO();
-		reportDTO.setTitle("µ¶ÈÄ°¨" + generatedString);
-		reportDTO.setBookIsbn("isbn¾îÂ¼±¸");
-		reportDTO.setContent("³»¿ë" + generatedString);
+		reportDTO.setTitle("ì œëª©" + generatedString);
+		reportDTO.setBookIsbn("isbnì–´ì©Œêµ¬");
+		reportDTO.setContent("ë‚´ìš©" + generatedString);
 		reportDTO.setUserEmail("ing06047");
 		reportDTO.setPublicBool(false);
 		String view = reportCService.setReport(httpSession, reportDTO, rttr);
