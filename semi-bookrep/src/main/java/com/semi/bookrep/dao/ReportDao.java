@@ -11,4 +11,6 @@ public interface ReportDao {
 
 	void deleteReportByReportId(Long id);
 
+	void applyReportUpdate(ReportDTO reportDTO);
+
 }
