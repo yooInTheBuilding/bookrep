@@ -1,6 +1,6 @@
 package com.semi.bookrep.dao;
 
-
+import java.util.List;
 import com.semi.bookrep.dto.ReportDTO;
 
 public interface ReportDao {
@@ -12,5 +12,7 @@ public interface ReportDao {
 	void deleteReportByReportId(Long id);
 
 	void applyReportUpdate(ReportDTO reportDTO);
+  
+	List<ReportDTO> getReportSummaryById(String userEmail);
 
 }
