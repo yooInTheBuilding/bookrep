@@ -1,13 +1,16 @@
 package com.semi.bookrep.controller;
 
 
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.semi.bookrep.dao.UserDao;
+import com.semi.bookrep.service.HomeService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,15 +19,27 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HomeController {
 	
-
 	@Autowired
-	private UserDao userDao;
+	private HomeService homeService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping("/")
 	public String home() {
-		int cnt = userDao.getUserCnt();
-		System.out.println(cnt);
-		return "home";
+		log.info("home1 화면 출력()");
+		return "home1";
+	}
+	
+	@PostMapping("/home")
+	public String home(HttpSession session) {
+		
+		String email = (String) session.getAttribute("email");
+		
+		if(email != null) {
+			log.info("home2 출력() ");
+			return "redirect:/home";
+		} else {
+			return "home1";
+		}
+		
 	}
 	
 }

@@ -15,7 +15,6 @@
 		FROM book
 		WHERE (book_name LIKE '%${keyword}%' ) OR (book_author LIKE '%${keyword}%' )
 	</select>
-
 	<select id="getImageList" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT
 		b.book_image
@@ -23,5 +22,9 @@
 		WHERE b.book_isbn =
 		r.report_book_isbn and b.book_isbn=${bookIsbn}
 	</select>
-
+	<insert id="saveBook" parameterType="com.semi.bookrep.dto.BookDTO">
+		INSERT book 
+		(book_name, book_author, book_publisher, book_isbn, book_image) 
+		VALUES (#{name}, #{author}, #{publisher}, #{isbn}, #{image})
+	</insert>
 </mapper>

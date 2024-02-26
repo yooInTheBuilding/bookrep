@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 public class MainUtil {
 	private static int maxNum=0;
 	
-	// 매개변수인 maxCnt는  메인 디스플레이에 표시되는 콘텐츠 개수
 	@SuppressWarnings("rawtypes")
 	public static <T> List<PageDTO> setPaging(List<T> objectList, int maxCnt){
 		log.info("setPaging()에 들어옴");
@@ -35,3 +34,4 @@ public class MainUtil {
 		return pageDTOList;
 	}
 }
+
