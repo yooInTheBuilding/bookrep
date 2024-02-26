@@ -84,7 +84,7 @@ public class ReportCService {
 			try {
 				reportDao.setReport(reportDTO);
 				msg = "작성 성공";
-				view = "redirect:showFeed/" + session.getAttribute("email");
+				view = "redirect:showFeed?email=" + session.getAttribute("email");
 			} catch (Exception e) {
 				e.printStackTrace();
 				msg = "빈 칸이 없도록 다시 작성하세요";

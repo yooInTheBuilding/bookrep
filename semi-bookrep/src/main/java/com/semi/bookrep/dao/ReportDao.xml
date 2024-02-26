@@ -27,4 +27,10 @@
 	<delete id="deleteReportByReportId" parameterType="java.lang.Long">
 		DELETE FROM report WHERE report_id = ${id}
 	</delete>
+	
+	<update id="applyReportUpdate" parameterType="com.semi.bookrep.dto.ReportDTO">
+		UPDATE report 
+		SET report_title = #{title}, report_content = #{content} 
+		WHERE report_id = ${id}
+	</update>
 </mapper>

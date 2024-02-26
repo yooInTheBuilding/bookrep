@@ -11,6 +11,8 @@ public interface ReportDao {
 
 	void deleteReportByReportId(Long id);
 
+	void applyReportUpdate(ReportDTO reportDTO);
+  
 	List<ReportDTO> getReportSummaryById(String userEmail);
 
 }
