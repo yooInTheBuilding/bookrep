@@ -69,12 +69,4 @@ public class ReportRService {
 		commentDao.setComment(commentDTO);
 	}
 
-	public int getLikeValueByReportId(Long id) {
-		
-		int likeValue = 0;
-		
-		
-		return likeValue;
-	}
-
 }
