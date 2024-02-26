@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.service.FeedService;
@@ -22,19 +23,16 @@ import lombok.extern.slf4j.Slf4j;
 public class FeedController {
 	@Autowired
 	private FeedService feedService;
+	
+	@Autowired
 	private FollowService followService;
 
-	@GetMapping("feed")
-	public String showFeed(String userEmail, HttpSession session, Model model) {
+	@GetMapping("feed/{userEmail}")
+	public String showFeed(@PathVariable String userEmail, HttpSession session, Model model) {
 
 		// 세션에서 현재 로그인한 사용자 이메일 가져옴.
 		String loggedInUserEmail = (String) session.getAttribute("userEmail");
-		
-		if (userEmail == null) {
-			userEmail = "aaa@aaa.com";
-			log.info("유저 이메일 null이기에 임의의 aaa@aaa.com 이메일 부여");
-		}
-		
+			
 		// 매개변수인 userEmail을 사용해서 해당 유저의 독후감 정보를 가져옴.
 		List<PageDTO> sessionItems = feedService.getReportSummaryById(userEmail);
 
@@ -54,10 +52,13 @@ public class FeedController {
 			log.info("로그인유저!=페이지유저");
 		}
 		
-		// 모델에 잘 담겼는지 확인용
+		// 모델에 잘 담겼는지 중간 확인용
 		log.info("model = " + model);
 
 		if (userEmail != null) {
+			if(userEmail == "aaa@aaa.com") {
+				log.info("확인용 임시 이메일입니다.");
+			}
 			// 팔로워 수 출력
 			int followerCnt = followService.getFollowerValueById(userEmail);
 			System.out.println(followerCnt);
@@ -66,17 +67,15 @@ public class FeedController {
 			int followingCnt = followService.getFollowingValueById(userEmail);
 			model.addAttribute("followingCnt", followingCnt);
 			System.out.println(followingCnt);
+			// 총 포스트 수 출력
+			int reportValue = feedService.getReportValueById(userEmail);
+			model.addAttribute("reportValue", reportValue);
+			System.out.println(reportValue);
 			
 			// 잘 담겼나 확인용
 			log.info("model = " + model);
-			
-		}else if(userEmail == "aaa@aaa.com") {
-			log.info("확인용 임시 이메일입ㄴ디ㅏ.");
-		}else {
-		    // userEmail이 null인 경우 처리
-			log.info("userEmail이 null입니다.");
 		}
-
+		
 		return "feed";
 	}
 }

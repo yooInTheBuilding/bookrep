@@ -3,10 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.semi.bookrep.dao.ReportDao">
-	<!-- <resultMap id="UserDTO" type="com.semi.bookrep.dto.UserDTO"> <result 
-		property="email" column="user_email" /> <result property="password" column="user_password" 
-		/> <result property="name" column="user_name" /> <result property="image" 
-		column="user_image" /> </resultMap> -->
+
 	<resultMap id="ReportDTO" type="com.semi.bookrep.dto.ReportDTO">
 		<result property="id" column="report_id" />
 		<result property="userEmail" column="report_user_email" />
@@ -17,9 +14,8 @@
 		<result property="time" column="report_time" />
 	</resultMap>
 
-	<select id="getReportSummaryById" parameterType="String"
-		resultMap="ReportDTO">
-		SELECT r.report_id, r.report_user_email, r.report_book_isbn, r.report_title, report_content, r.report_public, r.report_time
+	<select id="getReportSummaryById" parameterType="String" resultMap="ReportDTO">
+		SELECT r.report_id, r.report_user_email, r.report_book_isbn, r.report_title, r.report_content, r.report_public, r.report_time
 		FROM user u, report r
 		WHERE u.user_email = #{userEmail} AND u.user_email=r.report_user_email
 	</select>

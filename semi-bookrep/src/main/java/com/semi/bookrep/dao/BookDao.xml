@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.semi.bookrep.dao.BookDao">
 	<resultMap id="BookDTO" type="com.semi.bookrep.dto.BookDTO">
 		<result property="name" column="book_name" />
-    	<result property="author" column="book_author" />
-    	<result property="publisher" column="book_publisher" />
-    	<result property="isbn" column="book_isbn" />
-    	<result property="image" column="book_image" />
+		<result property="author" column="book_author" />
+		<result property="publisher" column="book_publisher" />
+		<result property="isbn" column="book_isbn" />
+		<result property="image" column="book_image" />
 	</resultMap>
 	<select id="getBookList" parameterType="String" resultMap="BookDTO">
-		SELECT * 
-		FROM book 
+		SELECT *
+		FROM book
 		WHERE (book_name LIKE '%${keyword}%' ) OR (book_author LIKE '%${keyword}%' )
 	</select>
-	
+
+	<select id="getImageList" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT
+		b.book_image
+		FROM book b, report r
+		WHERE b.book_isbn =
+		r.report_book_isbn and b.book_isbn=${bookIsbn}
+	</select>
+
 </mapper>

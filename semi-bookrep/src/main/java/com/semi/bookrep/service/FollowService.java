@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.semi.bookrep.controller.FeedController;
 import com.semi.bookrep.dao.FollowDao;
 import com.semi.bookrep.dto.FollowDTO;
 
@@ -20,15 +19,19 @@ public class FollowService {
 	private FollowDao followDao;
 
 	public int getFollowerValueById(String userEmail) {
+		
+		log.info("getFollowerValueById()");
+		
 		// 페이지 유저에 따른 팔로워 리스트 가져오기
 		List<String> followerList = getFollowerById(userEmail);
 
+		if (followerList == null || followerList.isEmpty()) {
+	        return 0;
+	    }
+		
 		// 팔로워 수 저장
 		int followerCnt = followerList.size();
 
-		if (followerList == null) {
-			followerCnt = 0;
-		}
 		return followerCnt;
 	}
 
@@ -36,37 +39,23 @@ public class FollowService {
 		// 페이지 유저에 따른 팔로잉 리스트 가져오기
 		List<String> followingList = getFollowingById(userEmail);
 
+        if (followingList == null || followingList.isEmpty()) {
+            return 0;
+        }
+		
 		// 팔로잉 수 저장
 		int followingCnt = followingList.size();
-		
-		if (followingList == null) {
-			followingCnt = 0;
-		}
 
 		return followingCnt;
 	}
 
 	public List<String> getFollowerById(String userEmail) {
-//		// 팔로워 목록 가져오기
-//		List<String> followersEmailList = null;
-////		List<String> followersEmailList = followDao.getFollowerEmailList(userEmail);
-//		return followersEmailList;
+
 		return null;
 	}
 
 	public List<String> getFollowingById(String userEmail) {
-//		// 팔로잉 목록 가져오기
-//		List<FollowDTO> followingList = null;
-////		List<FollowDTO> followingList = followDao.getFollowingList(userEmail);
-//
-//		List<String> followingsEmailList = new ArrayList<>();
-//
-////		// 팔로잉의 이메일을 리스트에 저장
-////		for (FollowDTO followDTO : followingList) {
-////			followingsEmailList.add(followDTO.getFollowingEmail());
-////		}
-//
-//		return followingsEmailList;
+
 		return null;
 	}
 }

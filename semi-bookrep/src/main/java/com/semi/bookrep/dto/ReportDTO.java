@@ -22,7 +22,6 @@ public class ReportDTO {
 	@NonNull
 	private String content;
 	
-	@NonNull
 	private boolean publicBool;
 	
 	private LocalDateTime time = LocalDateTime.now();
