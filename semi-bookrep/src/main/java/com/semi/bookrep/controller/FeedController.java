@@ -36,11 +36,18 @@ public class FeedController {
 		boolean isFollowing = followService.isFollowing(userEmail, loggedInUserEmail);
 		
 		model.addAttribute("isFollowing", isFollowing);
+		
 		// 매개변수인 userEmail을 사용해서 해당 유저의 독후감 정보를 가져옴.
 		List<PageDTO> sessionItems = feedService.getReportSummaryById(userEmail);
 
 		// 페이지 주인인 유저의 정보를 전달
 		model.addAttribute("userEmail", userEmail);
+		
+		// 페이지 유저의 사진 정보 가져오는 메서드
+		String userImage = feedService.getUserImage(userEmail);
+		
+		// 유저 이미지 전달
+		model.addAttribute("userImage", userImage);
 
 		// 독후감 정보 추가
 		model.addAttribute("sessionItems", sessionItems);

@@ -15,5 +15,7 @@ public interface UserDao {
 	
 	boolean signIn(String email, String password);
 
+	String getUserImage(String userEmail);
+
 	
 }

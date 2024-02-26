@@ -19,4 +19,9 @@
 		SELECT * FROM user WHERE email
 		= #{user_email} AND password = #{user_password}
 	</select>
+	<select id="getUserImage" parameterType="String" resultType="String">
+		SELECT user_image
+		FROM user
+		WHERE user_email = #{userEmail}
+	</select>
 </mapper>
