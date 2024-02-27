@@ -16,7 +16,7 @@ import com.semi.bookrep.service.FollowService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
-class feedTest {
+class FeedTest {
 	
 	@Autowired
 	private FeedService feedService;
