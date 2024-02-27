@@ -3,5 +3,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.semi.bookrep.dao.BookmarkDao">
-	
+	<select id="isBookmark" parameterType="com.semi.bookrep.dto.BookmarkDTO" resultType="int">
+		SELECT count(*) 
+		FROM bookmark 
+		WHERE bookmark_user_email = #{userEmail} 
+		AND bookmark_book_isbn = #{bookIsbn}
+	</select>
+	<insert id="setBookmark" parameterType="com.semi.bookrep.dto.BookmarkDTO">
+		INSERT bookmark (bookmark_user_email, bookmark_book_isbn) VALUES (#{userEmail}, #{bookIsbn})
+	</insert>
 </mapper>

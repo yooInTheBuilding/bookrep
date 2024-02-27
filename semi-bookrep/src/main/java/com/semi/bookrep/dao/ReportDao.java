@@ -17,4 +17,6 @@ public interface ReportDao {
 
 	List<ReportDTO> getReportOfFollowing(String email);
 
+	List<ReportDTO> getReportByIsbn(String isbn);
+
 }
