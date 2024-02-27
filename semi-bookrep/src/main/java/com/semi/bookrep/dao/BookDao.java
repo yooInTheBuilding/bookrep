@@ -14,5 +14,9 @@ public interface BookDao {
 	List<String> getImageList(String bookIsbn);
 	
 	void saveBook(BookDTO bookDTO);
+
+	BookDTO getBookByIsbn(String isbn);
+
+	List<BookDTO> getBookmarkByEmail(String email);
 	
 }

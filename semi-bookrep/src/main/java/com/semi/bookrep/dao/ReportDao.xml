@@ -34,8 +34,11 @@
 		WHERE report_id = ${id}
 	</update>
 	<select id="getReportOfFollowing" parameterType="java.lang.String" resultMap="ReportDTO">
-		SELECT * FROM report r, follow f
+		SELECT r.* FROM report r, follow f
 		WHERE r.report_user_email = f.follower_email AND f.followee_email = #{email} 
 		ORDER BY r.report_time desc
+	</select>
+	<select id="getReportByIsbn" parameterType="java.lang.String" resultMap="ReportDTO">
+		SELECT * FROM report WHERE report_book_isbn = #{isbn}
 	</select>
 </mapper>
