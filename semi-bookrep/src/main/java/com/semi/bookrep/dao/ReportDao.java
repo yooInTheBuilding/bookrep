@@ -15,4 +15,6 @@ public interface ReportDao {
   
 	List<ReportDTO> getReportSummaryById(String userEmail);
 
+	List<ReportDTO> getReportOfFollowing(String email);
+
 }

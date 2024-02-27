@@ -1,12 +1,36 @@
 package com.semi.bookrep;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import java.util.List;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.semi.bookrep.dto.ReportDTO;
+import com.semi.bookrep.service.HomeService;
+
+
+
+
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 public class HomeTest {
-
 	
+	@Autowired
+	private HomeService homeService;
+	
+	@Test
+	void getReportToHomeTest(){
+		List<ReportDTO> reportList = homeService.getReportToHome("ing06047");
+		for (ReportDTO reportDTO : reportList) {
+			System.out.println("title" + reportDTO.getTitle());
+			System.out.println("writer: " + reportDTO.getUserEmail());
+			System.out.println("time: " + reportDTO.getTime());
+		}
+	}
 
 }

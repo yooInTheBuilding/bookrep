@@ -50,12 +50,12 @@ class ReportCTest {
 		new Random().nextBytes(array);
 		String generatedString = new String(array, Charset.forName("UTF-8"));
 		HttpSession httpSession = new MockHttpSession();
-		httpSession.setAttribute("email", "ing06047");
+		httpSession.setAttribute("email", "sw0263");
 		ReportDTO reportDTO = new ReportDTO();
 		reportDTO.setTitle("제목" + generatedString);
 		reportDTO.setBookIsbn("isbn어쩌구");
 		reportDTO.setContent("내용" + generatedString);
-		reportDTO.setUserEmail("ing06047");
+		reportDTO.setUserEmail("sw0263");
 		reportDTO.setPublicBool(false);
 		String view = reportCService.setReport(httpSession, reportDTO, rttr);
 		System.out.println(view);

@@ -2,15 +2,21 @@ package com.semi.bookrep.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.semi.bookrep.dto.PageDTO;
+import com.semi.bookrep.dto.ReportDTO;
 import com.semi.bookrep.service.HomeService;
+import com.semi.bookrep.util.MainUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,23 +29,23 @@ public class HomeController {
 	private HomeService homeService;
 	
 	@GetMapping("/")
-	public String home() {
-		log.info("home1 화면 출력()");
-		return "home1";
-	}
-	
-	@PostMapping("/home")
-	public String home(HttpSession session) {
+	public String home(HttpSession session, Model model) {
+		log.info("home()");
 		
-		String email = (String) session.getAttribute("email");
+		String email = (String)session.getAttribute("email");
 		
-		if(email != null) {
-			log.info("home2 출력() ");
-			return "redirect:/home";
-		} else {
-			return "home1";
+		String view = "home1";
+		
+		if (email != null && !email.isEmpty()) {
+			List<ReportDTO> reportList = homeService.getReportToHome(email);
+			List<PageDTO> reportPageList = MainUtil.setPaging(reportList, 6);
+			model.addAttribute("reportList", reportPageList);
+			
+			view = "home2";
 		}
 		
+		return view;
 	}
+	
 	
 }
