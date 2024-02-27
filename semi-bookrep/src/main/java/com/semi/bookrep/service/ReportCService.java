@@ -77,10 +77,14 @@ public class ReportCService {
 		
 		String msg = null;
 		String view = null;
-		if (session.getAttribute("email") == null) {
-			msg = "�α��� �� �̿��ϼ���";
+		String email = (String)session.getAttribute("email");
+		if (email == null) {
+			msg = "로그인 먼저 하세요";
 			view = "redirect:sign-in";
-		}else {
+		}else if (email != reportDTO.getUserEmail()) {
+			msg = "허용되지 않은 사용자입니다";
+			view = "redirect:/";
+		} else {
 			try {
 				reportDao.setReport(reportDTO);
 				msg = "작성완료";

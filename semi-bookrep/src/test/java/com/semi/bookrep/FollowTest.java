@@ -47,7 +47,7 @@ class FollowTest {
 	
 	@Test
 	void followTest() {
-		followService.follow("ing06047", "sw0263");
+		followService.follow("ymj0263", "ing06047");
 	}
 	
 	@Test
