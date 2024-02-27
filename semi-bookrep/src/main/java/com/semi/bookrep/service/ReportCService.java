@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.semi.bookrep.APIKEY;
+//import com.semi.bookrep.APIKEY;
 import com.semi.bookrep.dao.BookDao;
 import com.semi.bookrep.dao.ReportDao;
 import com.semi.bookrep.dto.BookDTO;
@@ -43,9 +43,9 @@ public class ReportCService {
 				+ "?query=" + URLEncoder.encode(keyword, "UTF-8")
 				+ "&display=100";
 		HttpRequest request = HttpRequest.newBuilder()
-				.header("X-Naver-Client-Id", APIKEY.ID)
-				.header("X-Naver-Client-Secret", APIKEY.SECRET)
-				.uri(URI.create(url))
+				//.header("X-Naver-Client-Id", APIKEY.ID)/
+				//.header("X-Naver-Client-Secret", APIKEY.SECRET)
+				//.uri(URI.create(url))
 				.GET()
 				.build();
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -78,16 +78,16 @@ public class ReportCService {
 		String msg = null;
 		String view = null;
 		if (session.getAttribute("email") == null) {
-			msg = "·Î±×ÀÎ ÈÄ ÀÌ¿ëÇÏ¼¼¿ä";
+			msg = "ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½";
 			view = "redirect:sign-in";
 		}else {
 			try {
 				reportDao.setReport(reportDTO);
-				msg = "ÀÛ¼º ¼º°ø";
+				msg = "ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½";
 				view = "redirect:showFeed/" + session.getAttribute("email");
 			} catch (Exception e) {
 				e.printStackTrace();
-				msg = "ºó Ä­ÀÌ ¾øµµ·Ï ´Ù½Ã ÀÛ¼ºÇÏ¼¼¿ä";
+				msg = "ï¿½ï¿½ Ä­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Û¼ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½";
 				view = "redirect:write";
 			}
 		}
