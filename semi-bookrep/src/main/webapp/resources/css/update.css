@@ -12,6 +12,10 @@ fieldset {
 	border-radius: 5px;
 }
 
+span {
+	text-align: right;
+}
+
 .btn-box button {
 	padding: 1% 16%;
 	background-color: #918981;

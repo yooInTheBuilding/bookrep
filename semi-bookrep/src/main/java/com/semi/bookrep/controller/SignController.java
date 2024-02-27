@@ -1,5 +1,7 @@
 package com.semi.bookrep.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.semi.bookrep.dto.UserDTO;
 import com.semi.bookrep.service.SignService;
@@ -29,16 +33,7 @@ public class SignController {
 		return "signIn";
 	}
 
-	// 로그인 로직
-	@PostMapping("sign-in")
-	public String signIn(HttpSession session, @RequestParam String email, @RequestParam String password) {
-		log.info("email:{}, pw:{}", email, password);
-
-		String view = signService.signIn(session, email, password);
-		log.info(view);
-		return view;
-	}
-
+	
 	// 로그아웃 로직
 	@GetMapping("sign-out")
 	public String signOut(HttpSession session) {
@@ -47,39 +42,5 @@ public class SignController {
 		return "home1";
 	}
 
-	// 회원가입 로직
-	@GetMapping("sign-up")
-	public String showSignUp() {
-		log.info("회원가입 화면 이동");
-		return "signUp";
-	}
-
-	@PostMapping("sign-up")
-	public String signUp(@RequestParam String email, @RequestParam String password, @RequestParam String name) {
-		log.info("email:{}, pw:{}, name:{}", email, password, name);
-
-		String view = signService.signUp(email, password, name);
-		return view;
-	}
-
-	@GetMapping("update")
-	public String showModify(HttpSession session, Model model) {
-		log.info("회원정보 수정 화면 이동");
-		
-		UserDTO userDTO = (UserDTO) session.getAttribute("loggedEmail");
-		
-		if(userDTO != null) {
-			log.info("userDTO:{}", userDTO);
-		
-			model.addAttribute("userDTO", userDTO);
-			
-			return "update";
-		} else {
-			return "signIn";
-		}
-		
-		
-		
-	}
-
+	
 }

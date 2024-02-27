@@ -15,11 +15,8 @@ public interface UserDao {
 	
 	List<UserDTO> getUserList(String keyword);
 	
-	boolean signIn(@Param("email") String email, @Param("password") String password);
 
-	boolean signUp(@Param("email") String email, @Param("password") String password, @Param("name") String name);
 
-	UserDTO getUserByEmail(@Param("email") String email);
 
 	
 }
