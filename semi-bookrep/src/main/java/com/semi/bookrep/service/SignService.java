@@ -34,7 +34,7 @@ public class SignService {
 		if(loginResult != 0) {
 			log.info("로그인 성공");
 			session.setAttribute("email", email);
-			return "redirect:/";
+			return "redirect:/home";
 			
 		} else {
 			log.info("로그인 실패");
