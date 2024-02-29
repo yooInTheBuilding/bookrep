@@ -20,7 +20,7 @@
 		b.book_image
 		FROM book b, report r
 		WHERE b.book_isbn =
-		r.report_book_isbn and b.book_isbn=${bookIsbn}
+		r.report_book_isbn and b.book_isbn=#{bookIsbn}
 	</select>
 	<insert id="saveBook" parameterType="com.semi.bookrep.dto.BookDTO">
 		INSERT book 
