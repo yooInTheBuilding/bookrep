@@ -34,7 +34,7 @@ class FeedTest {
 		int testValue = feedService.getReportValueById(userEmail);
 		System.out.println(testValue);	
 	}
-	
+  
 	@Test
 	void getUserImageTest() {
 		String testImage = feedService.getUserImage(userEmail);
