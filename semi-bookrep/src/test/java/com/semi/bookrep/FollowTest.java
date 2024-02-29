@@ -2,6 +2,8 @@ package com.semi.bookrep;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +15,49 @@ import com.semi.bookrep.service.FollowService;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 class FollowTest {
-
+	
 	@Autowired
 	private FollowService followService;
-	
-	String userEmail = "aaa@aaa.com";
+
+	@Test
+	void getFollowerValueByEmailTest() {
+		System.out.println(followService.getFollowerValueByEmail("ing06047"));
+	}
 	
 	@Test
-	void followCntTest () {
-		int testFollowerCnt = followService.getFollowerValueById(userEmail);
-		int testFollowingCnt = followService.getFollowingValueById(userEmail);
-		
-		System.out.println(testFollowerCnt);
-		System.out.println(testFollowingCnt);	
+	void getFollowingValueByEmailTest() {
+		System.out.println(followService.getFollowingValueByEmail("ing06047"));
 	}
+	
+	@Test
+	void getFollowerByEmailTest() {
+		List<String> followerList = followService.getFollowerByEmail("ing06047");
+		for (String string : followerList) {
+			System.out.println("email: " + string);
+		}
+	}
+	
+	@Test
+	void getFollowingByEmailTest() {
+		List<String> followingList = followService.getFollowingByEmail("ing06047");
+		for (String string : followingList) {
+			System.out.println("email: " + string);
+		}
+	}
+	
+	@Test
+	void followTest() {
+		followService.follow("ymj0263", "ing06047");
+	}
+	
+	@Test
+	void unfollowTest() {
+		followService.unfollow("ing06047", "sw0263");
+	}
+	
+	@Test
+	void isFollowingTest() {
+		System.out.println(followService.isFollowing("ing06047", "sw0263"));
+	}
+
 }

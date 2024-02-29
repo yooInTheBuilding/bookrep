@@ -11,6 +11,12 @@ public interface ReportDao {
 
 	void deleteReportByReportId(Long id);
 
+	void applyReportUpdate(ReportDTO reportDTO);
+  
 	List<ReportDTO> getReportSummaryById(String userEmail);
+
+	List<ReportDTO> getReportOfFollowing(String email);
+
+	List<ReportDTO> getReportByIsbn(String isbn);
 
 }

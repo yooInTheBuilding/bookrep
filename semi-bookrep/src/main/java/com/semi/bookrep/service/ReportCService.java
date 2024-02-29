@@ -77,17 +77,21 @@ public class ReportCService {
 		
 		String msg = null;
 		String view = null;
-		if (session.getAttribute("email") == null) {
-			msg = "·Î±×ÀÎ ÈÄ ÀÌ¿ëÇÏ¼¼¿ä";
+		String email = (String)session.getAttribute("email");
+		if (email == null) {
+			msg = "ë¡œê·¸ì¸ ë¨¼ì € í•˜ì„¸ìš”";
 			view = "redirect:sign-in";
-		}else {
+		}else if (email != reportDTO.getUserEmail()) {
+			msg = "í—ˆìš©ë˜ì§€ ì•Šì€ ì‚¬ìš©ìì…ë‹ˆë‹¤";
+			view = "redirect:/";
+		} else {
 			try {
 				reportDao.setReport(reportDTO);
-				msg = "ÀÛ¼º ¼º°ø";
-				view = "redirect:showFeed/" + session.getAttribute("email");
+				msg = "ì‘ì„±ì™„ë£Œ";
+				view = "redirect:showFeed?email=" + session.getAttribute("email");
 			} catch (Exception e) {
 				e.printStackTrace();
-				msg = "ºó Ä­ÀÌ ¾øµµ·Ï ´Ù½Ã ÀÛ¼ºÇÏ¼¼¿ä";
+				msg = "ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”";
 				view = "redirect:write";
 			}
 		}

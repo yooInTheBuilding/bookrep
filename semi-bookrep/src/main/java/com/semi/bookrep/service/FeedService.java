@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.semi.bookrep.dao.BookDao;
 import com.semi.bookrep.dao.ReportDao;
+import com.semi.bookrep.dao.UserDao;
 import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.dto.ReportDTO;
@@ -28,6 +29,9 @@ public class FeedService {
 	
 	@Autowired
 	ReportRService reportRService;
+	
+	@Autowired
+	UserDao userDao;
 
 	public List<PageDTO> getReportSummaryById(String userEmail) {
 
@@ -47,25 +51,25 @@ public class FeedService {
 		List<Object> summaryList = new ArrayList<>();
 		log.info("이미지 매칭 작업 시작");
 		List<String> imagelist = new ArrayList<>();
-		List<Integer> likeList = new ArrayList<>();
 		
 		try {
-			for(ReportDTO reportDTO : userReports) {
-				imagelist.addAll(0, bookDao.getImageList(reportDTO.getBookIsbn()));
-				likeList.add(reportRService.getLikeValueByReportId(reportDTO.getId()));
-				
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("report", reportDTO);
-				map.put("image", imagelist.get(0));
-				map.put("like", likeList.get(0));
-				
-				summaryList.add(map);
-				log.info("잘 가져옴");
-			}
-		} catch (Exception e) {
-			log.info("이미지 못 받아옴.");
-			e.printStackTrace();
-		}
+	         for(ReportDTO reportDTO : userReports) {
+	            imagelist.addAll(0, bookDao.getImageList(reportDTO.getBookIsbn()));
+	            int likeValue = reportRService.getLikeValueByReportId(reportDTO.getId());
+	            
+	            Map<String, Object> map = new HashMap<String, Object>();
+	            map.put("report", reportDTO);
+	            map.put("image", imagelist.get(0));
+	            map.put("like", likeValue);
+	            
+	            summaryList.add(map);
+	            log.info("잘 가져옴");
+	         }
+	      } catch (Exception e) {
+	         log.info("이미지 못 받아옴.");
+	         e.printStackTrace();
+	      }
+
 	
 		log.info("setPaging() 진입시도");
 		
@@ -87,5 +91,11 @@ public class FeedService {
 		int reportValue = userReports.size();
 		
 		return reportValue;
+	}
+
+	public String getUserImage(String userEmail) {
+		String userImage = userDao.getUserImage(userEmail);
+		
+		return userImage;
 	}
 }

@@ -32,12 +32,22 @@ public class FeedController {
 
 		// 세션에서 현재 로그인한 사용자 이메일 가져옴.
 		String loggedInUserEmail = (String) session.getAttribute("userEmail");
-			
+		
+		boolean isFollowing = followService.isFollowing(userEmail, loggedInUserEmail);
+		
+		model.addAttribute("isFollowing", isFollowing);
+		
 		// 매개변수인 userEmail을 사용해서 해당 유저의 독후감 정보를 가져옴.
 		List<PageDTO> sessionItems = feedService.getReportSummaryById(userEmail);
 
 		// 페이지 주인인 유저의 정보를 전달
 		model.addAttribute("userEmail", userEmail);
+		
+		// 페이지 유저의 사진 정보 가져오는 메서드
+		String userImage = feedService.getUserImage(userEmail);
+		
+		// 유저 이미지 전달
+		model.addAttribute("userImage", userImage);
 
 		// 독후감 정보 추가
 		model.addAttribute("sessionItems", sessionItems);
@@ -60,11 +70,11 @@ public class FeedController {
 				log.info("확인용 임시 이메일입니다.");
 			}
 			// 팔로워 수 출력
-			int followerCnt = followService.getFollowerValueById(userEmail);
+			int followerCnt = followService.getFollowerValueByEmail(userEmail);
 			System.out.println(followerCnt);
 			model.addAttribute("followerCnt", followerCnt);
 			// 팔로잉 수 출력
-			int followingCnt = followService.getFollowingValueById(userEmail);
+			int followingCnt = followService.getFollowingValueByEmail(userEmail);
 			model.addAttribute("followingCnt", followingCnt);
 			System.out.println(followingCnt);
 			// 총 포스트 수 출력

@@ -13,9 +13,9 @@
 	   <result property="time" column="report_time" />
 	</resultMap>
 	<select id="getReportSummaryById" parameterType="String" resultMap="ReportDTO">
-		SELECT r.report_id, r.report_user_email, r.report_book_isbn, r.report_title, r.report_content, r.report_public, r.report_time
-		FROM user u, report r
-		WHERE u.user_email = #{userEmail} AND u.user_email=r.report_user_email
+		SELECT *
+		FROM report
+		WHERE report_user_email = #{userEmail}
 	</select>
 	<insert id="setReport" parameterType="com.semi.bookrep.dto.ReportDTO">
 		INSERT report (report_user_email, report_book_isbn, report_title, report_content, report_public)
@@ -27,4 +27,18 @@
 	<delete id="deleteReportByReportId" parameterType="java.lang.Long">
 		DELETE FROM report WHERE report_id = ${id}
 	</delete>
+	
+	<update id="applyReportUpdate" parameterType="com.semi.bookrep.dto.ReportDTO">
+		UPDATE report 
+		SET report_title = #{title}, report_content = #{content} 
+		WHERE report_id = ${id}
+	</update>
+	<select id="getReportOfFollowing" parameterType="java.lang.String" resultMap="ReportDTO">
+		SELECT r.* FROM report r, follow f
+		WHERE r.report_user_email = f.follower_email AND f.followee_email = #{email} 
+		ORDER BY r.report_time desc
+	</select>
+	<select id="getReportByIsbn" parameterType="java.lang.String" resultMap="ReportDTO">
+		SELECT * FROM report WHERE report_book_isbn = #{isbn}
+	</select>
 </mapper>
