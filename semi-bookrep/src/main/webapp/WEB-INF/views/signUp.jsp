@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/signUp.css">
-<script
-	  src="https://code.jquery.com/jquery-3.7.1.min.js"
-	  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-	  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<c:choose>
@@ -28,7 +28,7 @@
 
 				<h1>SignUp</h1>
 
-				<form action="/bookrep/sign-up" method="post">
+				<form id="signup-form" action="sign-up" method="post">
 					<p>
 					<div class="int-area">
 						<input type="text" name="email" id="email" autocomplete="off"
@@ -49,7 +49,7 @@
 
 					<p>
 					<div class="signUp-page-button">
-						<button onclick="return submitForm()">SignUp</button>
+						<button>SignUp</button>
 					</div>
 				</form>
 			</div>
@@ -66,15 +66,14 @@
 		</fieldset>
 	</div>
 </body>
-
+<script>
 	
-	<script>
 	function checkId() {
-		
+
 		var email = $('#email').val(); //id값이 "id"인 입력란의 값을 저장
-		
+
 		var checkEmail = document.getElementById("checkEmail");
-		
+
 		$.ajax({
 			url : './emailCheck', //Controller에서 요청 받을 주소
 			type : 'post', //POST 방식으로 전달
@@ -85,7 +84,7 @@
 				if (cnt == 0) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
 					checkEmail.innerHTML = "사용 가능한 이메일입니다.";
 				} else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-					checkEmail.innerHTML = "누군가 이 아이디를 사용하고 있어요.";
+					checkEmail.innerHTML = "중복된 이메일이에요.";
 					alert("아이디를 다시 입력해주세요");
 					$('#email').val('');
 				}
@@ -96,5 +95,4 @@
 		});
 	};
 </script>
-
 </html>

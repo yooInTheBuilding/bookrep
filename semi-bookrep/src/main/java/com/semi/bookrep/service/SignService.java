@@ -34,7 +34,7 @@ public class SignService {
 		if(loginResult != 0) {
 			log.info("로그인 성공");
 			session.setAttribute("email", email);
-			return "redirect:/";
+			return "redirect:/home";
 			
 		} else {
 			log.info("로그인 실패");
@@ -59,14 +59,13 @@ public class SignService {
 		
 		try {
 			userDao.applySignUp(userDTO);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg = "중복된 이메일입니다";
 			view = "redirect:sign-up";
 		}
 		String[] arr = {msg, view};
-		
+	
 		return arr;
 	}
 
