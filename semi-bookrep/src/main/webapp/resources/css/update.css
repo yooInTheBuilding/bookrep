@@ -27,20 +27,29 @@ fieldset {
 	margin-bottom: 10px;
 }
 
-.input-1 {
-	width: 80%;
-}
-
-.input-2 {
-	width: 85%;
-}
-
-.input-3 {
-	width: 76%;
-}
-
-.input-4 {
+input {
 	width: 65%;
+}
+
+
+.input1 {
+	margin-left: 12px;
+}
+
+.input2 {
+	margin-left: 32px;
+}
+
+.label1 {
+	padding: 0px 15px;
+}
+
+.label2 {
+	padding: 0px 15px;
+}
+
+.label3 {
+	padding: 0px 11px;
 }
 
 .enter-area label {
