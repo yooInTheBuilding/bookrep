@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.PageDTO;
@@ -50,15 +51,13 @@ public class BookController {
 	}
 	
 	@PostMapping("bookmark")
-	public void setBookmark(HttpSession session, @RequestParam("isbn") String isbn) {
+	@ResponseBody
+	public String setBookmark(HttpSession session, @RequestParam("isbn") String isbn) {
 		log.info("setBookmark()");
 		
 		bookmarkService.setBookmark(session, isbn);
+		
+		return "success";
 	}
-	
-	
-	
-	
-	
 	
 }
