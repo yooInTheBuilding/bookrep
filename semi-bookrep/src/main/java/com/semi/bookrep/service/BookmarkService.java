@@ -61,4 +61,14 @@ public class BookmarkService {
 		return bookmarkList;
 	}
 
+
+	public void removeBookmark(HttpSession session, String isbn) {
+		log.info("removeBookmark()");
+		
+		String email = (String)session.getAttribute("email");
+		BookmarkDTO bookmarkDTO = new BookmarkDTO(email, isbn);
+		
+		bookmarkDao.removeBookmark(bookmarkDTO);
+	}
+
 }

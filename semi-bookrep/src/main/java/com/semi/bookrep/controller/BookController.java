@@ -52,12 +52,17 @@ public class BookController {
 	
 	@PostMapping("bookmark")
 	@ResponseBody
-	public String setBookmark(HttpSession session, @RequestParam("isbn") String isbn) {
+	public int setBookmark(HttpSession session, @RequestParam("isbn") String isbn) {
 		log.info("setBookmark()");
 		
-		bookmarkService.setBookmark(session, isbn);
-		
-		return "success";
+		boolean bookmarkBool = bookmarkService.isBookmark(session, isbn);
+		if (bookmarkBool) {
+			bookmarkService.removeBookmark(session, isbn);
+			return 0;
+		}else {
+			bookmarkService.setBookmark(session, isbn);
+			return 1;
+		}
 	}
 	
 }
