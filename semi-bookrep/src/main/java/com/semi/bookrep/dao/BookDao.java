@@ -11,7 +11,7 @@ public interface BookDao {
 	
 	List<BookDTO> getBookList(String keyword);
 
-	List<String> getImageList(String bookIsbn);
+	String getImage(String bookIsbn);
 	
 	void saveBook(BookDTO bookDTO);
 

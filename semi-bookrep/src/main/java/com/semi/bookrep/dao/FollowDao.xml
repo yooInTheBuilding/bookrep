@@ -9,7 +9,7 @@
 	<select id="getFollowingByEmail" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT follower_email FROM follow WHERE followee_email = #{email}
 	</select>
-	<select id="isFollowing" parameterType="com.semi.bookrep.dto.FollowDTO" resultType="java.lang.Integer">
+	<select id="isFollowing" parameterType="com.semi.bookrep.dto.FollowDTO" resultType="int">
 		SELECT count(*) FROM follow WHERE follower_email = #{followerEmail} AND followee_email = #{followeeEmail}
 	</select>
 	<insert id="follow" parameterType="com.semi.bookrep.dto.FollowDTO">

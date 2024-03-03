@@ -10,7 +10,7 @@ public interface FollowDao {
 
 	List<String> getFollowingByEmail(String email);
 
-	Integer isFollowing(FollowDTO followDTO);
+	int isFollowing(FollowDTO followDTO);
 
 	void follow(FollowDTO followDTO);
 
