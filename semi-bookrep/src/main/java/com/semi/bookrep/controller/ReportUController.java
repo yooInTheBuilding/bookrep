@@ -25,7 +25,7 @@ public class ReportUController {
 	@Autowired
 	private ReportUService reportUService;
 	
-	@GetMapping("update")
+	@GetMapping("report-update")
 	public String showReportUpdate(HttpSession session, @RequestParam("id") Long id, Model model) {
 		log.info("showReportUpdate()");
 		
