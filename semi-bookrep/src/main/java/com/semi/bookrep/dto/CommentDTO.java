@@ -2,10 +2,14 @@ package com.semi.bookrep.dto;
 
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentDTO {
 	
 	private Long id;
@@ -19,6 +23,6 @@ public class CommentDTO {
 	@NonNull
 	private String content;
 	
-	private LocalDateTime time = LocalDateTime.now();
+	private LocalDateTime time;
 	
 }

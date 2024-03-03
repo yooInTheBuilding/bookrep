@@ -1,10 +1,15 @@
 package com.semi.bookrep.service;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.semi.bookrep.dao.UserDao;
 import com.semi.bookrep.dto.UserDTO;
@@ -15,13 +20,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SignService {
 	
-	@Autowired UserDao userDao;
+	@Autowired 
+	private UserDao userDao;
 
 	public String signIn(HttpSession session, String email, String password) {
+		log.info("signIn()");
 		
-		boolean loginResult = userDao.signIn(email, password);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("password", password);
+		int loginResult = userDao.signIn(map);
 		
-		if(loginResult) {
+		if(loginResult != 0) {
 			log.info("로그인 성공");
 			
 			UserDTO userDTO = userDao.getUserByEmail(email);
@@ -36,18 +46,108 @@ public class SignService {
 		
 	}
 
-	public String signUp(String email, String password, String name) {
+	public int emailCheck(String email) {
+		log.info("emailCheck()");
 		
-		boolean joinResult = userDao.signUp(email, password, name); 
-		
-		if(joinResult) {
-			log.info("회원가입 성공");
-			return "home1";
-		} else {
-			log.info("회원가입 실패");
-			return "signUp";
-		}
+		int cnt = userDao.emailCheck(email);
+		return cnt;
 	}
 
+	public String[] applySignUp(String email, String name, String password) {
+		log.info("applySignUp()");
+		
+		String msg = "회원가입 성공";
+		String view = "redirect:/";
+		UserDTO userDTO = new UserDTO(email, password, name);
+		
+		try {
+			userDao.applySignUp(userDTO);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "중복된 이메일입니다";
+			view = "redirect:sign-up";
+		}
+		String[] arr = {msg, view};
+		
+		return arr;
+	}
+
+	public String findPassword(String email, String name) {
+		log.info("findPassword()");
+		
+		String result = null;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("name", name);
+		String password = userDao.getPassword(map);
+		if (password == null || password.isEmpty()) {
+			result = "일치하는 계정이 없습니다";
+		}else {
+			result = "비밀번호는 " + password + "입니다";
+		}
+		
+		return result;
+	}
+
+	public UserDTO showModify(HttpSession session) {
+		log.info("showModify()");
+		
+		String email = (String)session.getAttribute("email");
+		UserDTO userDTO = userDao.showModify(email);
+		
+		return userDTO;
+	}
+
+	public void modify(List<MultipartFile> files, UserDTO userDTO, HttpSession session) throws Exception {
+		log.info("modify()");
+		String upFile = null;
+		if (files != null && !files.isEmpty()) {
+			upFile = files.get(0).getOriginalFilename();
+		}
+		if (upFile != null && !upFile.isEmpty() && !upFile.isBlank()) {
+			fileUpload(files, session, userDTO);
+		}
+		
+		userDao.modify(userDTO);
+		
+	}
+	
+	private void fileUpload(List<MultipartFile> files,
+            HttpSession session,
+            UserDTO userDTO) throws Exception {
+		log.info("fileUpload()");
+		String image = null;
+		String original = null;
+		
+		String realPath = session.getServletContext().getRealPath("/");
+		realPath += "resources/upload/";
+		File folder = new File(realPath);
+		if(folder.isDirectory() == false){
+		folder.mkdir();
+		}
+		
+		MultipartFile mf = files.get(0);
+		original = mf.getOriginalFilename();
+		
+		image = System.currentTimeMillis()
+				+ original.substring(original.lastIndexOf("."));
+		
+		File file = new File(realPath + image);
+	
+		mf.transferTo(file);
+		userDTO.setImage(image);
+	}
+
+	public void resign(HttpSession session) {
+		log.info("resign()");
+		
+		String email = (String)session.getAttribute("email");
+		
+		userDao.resign(email);
+		
+		session.invalidate();
+	}
 
 }

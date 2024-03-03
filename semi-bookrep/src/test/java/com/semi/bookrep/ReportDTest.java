@@ -2,7 +2,6 @@ package com.semi.bookrep;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,27 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.semi.bookrep.dto.ReportDTO;
-import com.semi.bookrep.service.HomeService;
-
-
-
+import com.semi.bookrep.service.ReportDService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
-public class HomeTest {
+class ReportDTest {
 	
 	@Autowired
-	private HomeService homeService;
-	
+	private ReportDService reportDService;
+
 	@Test
-	void getReportToHomeTest(){
-		List<ReportDTO> reportList = homeService.getReportToHome("ing06047");
-		for (ReportDTO reportDTO : reportList) {
-			System.out.println("title" + reportDTO.getTitle());
-			System.out.println("writer: " + reportDTO.getUserEmail());
-			System.out.println("time: " + reportDTO.getTime());
-		}
+	void deleteReportByReportIdTest() {
+		reportDService.deleteReportByReportId(3L);
 	}
 
 }

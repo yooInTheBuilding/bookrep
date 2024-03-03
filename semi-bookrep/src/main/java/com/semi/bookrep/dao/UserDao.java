@@ -1,6 +1,7 @@
 package com.semi.bookrep.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -15,11 +16,21 @@ public interface UserDao {
 	
 	List<UserDTO> getUserList(String keyword);
 	
-	boolean signIn(@Param("email") String email, @Param("password") String password);
+	int signIn(Map<String, String> map);
 
-	boolean signUp(@Param("email") String email, @Param("password") String password, @Param("name") String name);
+	String getUserImage(String userEmail);
 
-	UserDTO getUserByEmail(@Param("email") String email);
+	int emailCheck(String email);
+
+	void applySignUp(UserDTO userDTO);
+
+	String getPassword(Map<String, String> map);
+
+	UserDTO showModify(String email);
+
+	void modify(UserDTO userDTO);
+
+	void resign(String email);
 
 	
 }

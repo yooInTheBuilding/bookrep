@@ -10,27 +10,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.ReportDTO;
-import com.semi.bookrep.service.HomeService;
-
-
-
+import com.semi.bookrep.service.BookService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml", "file:src/main/webapp/WEB-INF/spring/root-context.xml"})
-public class HomeTest {
+class BookTest {
 	
 	@Autowired
-	private HomeService homeService;
+	private BookService bookService;
+
+	@Test
+	void getReportByIsbnTest() {
+		List<ReportDTO> reportList = bookService.getReportByIsbn("isbn어쩌구");
+		for (ReportDTO reportDTO : reportList) {
+			System.out.println("title: " + reportDTO.getTitle());
+			System.out.println("isbn: " + reportDTO.getBookIsbn());
+		}
+	}
 	
 	@Test
-	void getReportToHomeTest(){
-		List<ReportDTO> reportList = homeService.getReportToHome("ing06047");
-		for (ReportDTO reportDTO : reportList) {
-			System.out.println("title" + reportDTO.getTitle());
-			System.out.println("writer: " + reportDTO.getUserEmail());
-			System.out.println("time: " + reportDTO.getTime());
-		}
+	void getBookByIsbnTest() {
+		BookDTO bookDTO = bookService.getBookByIsbn("isbn어쩌구");
+		System.out.println("name: " + bookDTO.getName());
+		System.out.println("isbn: " + bookDTO.getIsbn());
 	}
 
 }

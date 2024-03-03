@@ -23,7 +23,7 @@ class NaverApiTest {
 	
 	@Test
 	public void test() throws IOException, InterruptedException {
-		List<BookDTO> bookList = reportCService.getBookByAPI("½Å");
+		List<BookDTO> bookList = reportCService.getBookByAPI("ì‹ ");
 		for (BookDTO bookDTO : bookList) {
 			System.out.println("name: " + bookDTO.getName());
 			System.out.println("author: " + bookDTO.getAuthor());
