@@ -33,7 +33,10 @@ public class SignService {
 		
 		if(loginResult != 0) {
 			log.info("로그인 성공");
-			session.setAttribute("email", email);
+			
+			UserDTO userDTO = userDao.getUserByEmail(email);
+			session.setAttribute("loggedEmail", userDTO);
+			
 			return "redirect:/home";
 			
 		} else {

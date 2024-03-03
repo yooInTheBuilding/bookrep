@@ -10,6 +10,8 @@
     	<result property="name" column="user_name" />
     	<result property="image" column="user_image" />
 	</resultMap>
+	
+	
 	<select id="getUserList" parameterType="String" resultMap="UserDTO">
 		SELECT *
 		FROM user 

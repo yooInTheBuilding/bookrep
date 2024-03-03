@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/signIn.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -17,22 +20,24 @@
 
 				<h1>SignIn</h1>
 
-				<p>
-				<div class="int-area">
-					<input type="text" name="user_email" id="email" autocomplete="off"
-						placeholder="Email" required>
-				</div>
+				<form action="/bookrep/sign-in" method="post">
+					<p>
+					<div class="int-area">
+						<input type="text" name="email" id="email" autocomplete="off"
+							placeholder="Email" required>
+					</div>
 
-				<p>
-				<div class="int-area">
-					<input type="password" name="user_password" id="pw"
-						autocomplete="off" placeholder="Password" required>
-				</div>
+					<p>
+					<div class="int-area">
+						<input type="password" name="password" id="password"
+							autocomplete="off" placeholder="password" required>
+					</div>
 
-				<p>
-				<div class="login-page-button">
-					<button>Login</button>
-				</div>
+					<p>
+					<div class="login-page-button">
+						<button>Login</button>
+			</div> 
+				</form>
 
 				<h5>or</h5>
 
@@ -46,7 +51,7 @@
 		<fieldset>
 			<div class="sign-up-link">
 				<p>
-					Don't have an account? <a href="/bookrep/find-password">Sign Up</a>
+					Don't have an account? <a href="/bookrep/sign-up">Sign Up</a>
 				<p>
 			</div>
 		</fieldset>

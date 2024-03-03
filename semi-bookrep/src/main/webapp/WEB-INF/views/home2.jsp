@@ -5,9 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body {
+	background-color: #f5f5f5;
+}
+</style>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<h1>home2</h1>
+
 </body>
 </html>

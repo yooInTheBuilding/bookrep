@@ -16,12 +16,12 @@ public class HomeController {
 	public String main() {
 		return "home1";
 	}
-
+	
 	@GetMapping("/home")
 	public String home(HttpSession session) {
-
+    
 		String email = (String) session.getAttribute("email");
-
+    
 		log.info(email);
 		
 		if (email != null) {
