@@ -34,8 +34,7 @@ public class SignService {
 		if(loginResult != 0) {
 			log.info("로그인 성공");
 			
-			UserDTO userDTO = userDao.getUserByEmail(email);
-			session.setAttribute("loggedEmail", userDTO);
+			session.setAttribute("email", email);
 			
 			return "redirect:/home";
 			

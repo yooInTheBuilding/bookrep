@@ -50,16 +50,16 @@ public class FeedService {
 		
 		List<Object> summaryList = new ArrayList<>();
 		log.info("이미지 매칭 작업 시작");
-		List<String> imagelist = new ArrayList<>();
 		
 		try {
 	         for(ReportDTO reportDTO : userReports) {
-	            imagelist.addAll(0, bookDao.getImageList(reportDTO.getBookIsbn()));
+	        	String image = bookDao.getImage(reportDTO.getBookIsbn());
+	            
 	            int likeValue = reportRService.getLikeValueByReportId(reportDTO.getId());
 	            
 	            Map<String, Object> map = new HashMap<String, Object>();
 	            map.put("report", reportDTO);
-	            map.put("image", imagelist.get(0));
+	            map.put("image", image);
 	            map.put("like", likeValue);
 	            
 	            summaryList.add(map);
@@ -68,6 +68,7 @@ public class FeedService {
 	      } catch (Exception e) {
 	         log.info("이미지 못 받아옴.");
 	         e.printStackTrace();
+	         
 	      }
 
 	

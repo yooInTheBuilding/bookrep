@@ -83,7 +83,7 @@ public class FollowService {
 		log.info("isFollowing()");
 		
 		FollowDTO followDTO = new FollowDTO(followerEmail, followeeEmail);
-		Integer followValue = followDao.isFollowing(followDTO);
+		int followValue = followDao.isFollowing(followDTO);
 		
 		if (followValue == 0) {
 			return false;

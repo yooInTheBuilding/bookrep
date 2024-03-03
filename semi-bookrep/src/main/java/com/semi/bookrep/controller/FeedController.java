@@ -31,7 +31,7 @@ public class FeedController {
 	public String showFeed(@PathVariable String userEmail, HttpSession session, Model model) {
 
 		// 세션에서 현재 로그인한 사용자 이메일 가져옴.
-		String loggedInUserEmail = (String) session.getAttribute("userEmail");
+		String loggedInUserEmail = (String) session.getAttribute("email");
 		
 		boolean isFollowing = followService.isFollowing(userEmail, loggedInUserEmail);
 		

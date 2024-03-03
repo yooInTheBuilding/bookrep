@@ -15,12 +15,11 @@
 		FROM book
 		WHERE (book_name LIKE '%${keyword}%' ) OR (book_author LIKE '%${keyword}%' )
 	</select>
-	<select id="getImageList" parameterType="java.lang.String" resultType="java.lang.String">
+	<select id="getImage" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT
-		b.book_image
-		FROM book b, report r
-		WHERE b.book_isbn =
-		r.report_book_isbn and b.book_isbn=#{bookIsbn}
+		book_image
+		FROM book
+		WHERE book_isbn = #{bookIsbn}
 	</select>
 	<insert id="saveBook" parameterType="com.semi.bookrep.dto.BookDTO">
 		INSERT book 
