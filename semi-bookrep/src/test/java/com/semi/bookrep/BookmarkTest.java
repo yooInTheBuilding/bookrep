@@ -54,5 +54,12 @@ class BookmarkTest {
 			System.out.println("author: " + bookDTO.getAuthor());
 		}
 	}
+	
+	@Test
+	void removeBookmarkTest() {
+		HttpSession session = new MockHttpSession();
+		session.setAttribute("email", "ing06047");
+		bookmarkService.removeBookmark(session, "isbn어쩌구");
+	}
 
 }

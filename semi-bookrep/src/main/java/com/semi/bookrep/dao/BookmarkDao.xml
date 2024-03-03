@@ -12,4 +12,9 @@
 	<insert id="setBookmark" parameterType="com.semi.bookrep.dto.BookmarkDTO">
 		INSERT bookmark (bookmark_user_email, bookmark_book_isbn) VALUES (#{userEmail}, #{bookIsbn})
 	</insert>
+	<delete id="removeBookmark" parameterType="com.semi.bookrep.dto.BookmarkDTO">
+		DELETE FROM bookmark 
+		WHERE bookmark_user_email = #{userEmail} 
+		AND bookmark_book_isbn = #{bookIsbn}
+	</delete>
 </mapper>

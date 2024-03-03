@@ -8,5 +8,7 @@ public interface BookmarkDao {
 
 	void setBookmark(BookmarkDTO bookmarkDTO);
 
+	void removeBookmark(BookmarkDTO bookmarkDTO);
+
 
 }
