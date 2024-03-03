@@ -26,9 +26,9 @@ public class ReportDController {
 		String email = (String)session.getAttribute("email");
 		String msg = null;
 		String view = null;
-		if (email == null || email != reportEmail) {
+		if (email == null || !email.equals(reportEmail)) {
 			msg = "you are not an owner of this report";
-			view = "redirect:report-detail?" + id;
+			view = "redirect:/report-detail?id=" + id;
 		}else {
 			try {
 				reportDService.deleteReportByReportId(id);
@@ -37,7 +37,7 @@ public class ReportDController {
 			} catch (Exception e) {
 				e.printStackTrace();
 				msg = "delete failed";
-				view = "redirect:report-detail?" + id;
+				view = "redirect:/report-detail?id=" + id;
 			}
 		}
 		rttr.addFlashAttribute("msg", msg);
