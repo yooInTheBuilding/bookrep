@@ -24,11 +24,11 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-
+			
 
 			<div class="logo">
 				<img src="resources/images/bookrepLogo.png" alt="로고"
-					onclick="return moveToHome()">
+					onclick="moveToHome()">
 			</div>
 			<div class="buttons">
 				<div class="search-box">
@@ -62,10 +62,13 @@
 		
 		if(email1 != null){
 			location.href = "/bookrep/feed";
-		} else {
-			alert = "로그인 후 이용해주세요.";
 		}
 	}
+	
+	const moveToWrite = () => {
+		location.href = "/bookrep/write";
+	}
+	
 </script>
 
 </html>

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.semi.bookrep.dao.FollowDao;
 import com.semi.bookrep.dao.ReportDao;
+import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.dto.ReportDTO;
 import com.semi.bookrep.dto.UserDTO;
 import com.semi.bookrep.util.MainUtil;
@@ -27,13 +28,16 @@ public class HomeService {
 	public ReportDao reportDao;
 	
 	
-	public List<ReportDTO> getReportToHome(String email) {
+	public List<PageDTO> getReportToHome(String email) {
 		log.info("getReportToHome()");
 		
 		List<ReportDTO> reportList = reportDao.getReportOfFollowing(email);
 		
-		return reportList;
+		List<PageDTO> pageList = MainUtil.setPaging(reportList, 6);
+		
+		return pageList;
 	}
 
 	
 }
+

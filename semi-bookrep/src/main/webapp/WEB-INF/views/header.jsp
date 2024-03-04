@@ -15,7 +15,7 @@
 		<div class="header">
 			<div class="profile">
 				<c:choose>
-					<c:when test="${not empty sessionScope.loggedEmail}">
+					<c:when test="${not empty sessionScope.email}">
 						<a href="/bookrep/feed"><i class="fa fa-user-circle-o fa-2x"
 							aria-hidden="true"></i></a>
 						<!-- </div> -->
@@ -57,9 +57,9 @@
 	</header>
 </body>
 <script>
-	const moveToHome = () => {
+		const moveToHome = () => {
 
-		var email = "${sessionScope.loggedEmail}";
+		var email = "${sessionScope.email}";
 		
 		if(email != null) {
 			location.href = "/bookrep/home";
@@ -67,17 +67,7 @@
 			location.href = "/bookrep/";
 		}
 	}
-	
-	const moveToFeed = () => {
-		
-		var email1 = "${sessionScope.loggedEmail}";
-		
-		if(email1 != null){
-			location.href = "/bookrep/feed";
-		} else {
-			alert = "로그인 후 이용해주세요.";
-		}
-	}
+
 </script>
 
 </html>

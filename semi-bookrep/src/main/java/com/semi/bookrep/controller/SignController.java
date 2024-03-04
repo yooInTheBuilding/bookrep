@@ -62,12 +62,12 @@ public class SignController {
 	
 	@PostMapping("/emailCheck")
 	@ResponseBody
-	public int emailCheck(@RequestParam("email") String email) {
+	public String emailCheck(@RequestParam("email") String email) {
 		log.info("emailCheck()");
 		
 		int cnt = signService.emailCheck(email);
 		
-		return cnt;
+		return String.valueOf(cnt);
 	}
 	
 	@PostMapping("sign-up")
