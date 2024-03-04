@@ -20,7 +20,7 @@
 			<jsp:include page="header.jsp"></jsp:include>
 		</c:otherwise>
 	</c:choose>
-
+ 
 	<div class="out-line">
 
 		<fieldset class="out-line-box">
