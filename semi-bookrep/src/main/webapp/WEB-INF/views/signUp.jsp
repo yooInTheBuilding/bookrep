@@ -86,7 +86,7 @@
 				} else { // cnt가 1일 경우 -> 이미 존재하는 아이디
 					checkEmail.innerHTML = "중복된 이메일이에요.";
 					alert("아이디를 다시 입력해주세요");
-					$('#email').val('');
+					$('#email').val(''); 
 				}
 			},
 			error : function() {
