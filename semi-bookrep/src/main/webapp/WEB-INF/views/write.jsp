@@ -13,8 +13,16 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+	<c:choose>
+		<c:when test="${not empty sessionScope.email}">
+			<jsp:include page="loggedHeader.jsp"></jsp:include>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="header.jsp"></jsp:include>
+		</c:otherwise>
+	</c:choose>
 	<div class="wrap">
-		<jsp:include page="header.jsp" />
+		
 		<br> <br> <br>
 		<div class="content">
 			<!-- 검색어 입력 폼 -->

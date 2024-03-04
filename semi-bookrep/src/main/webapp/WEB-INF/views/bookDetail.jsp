@@ -11,7 +11,14 @@
 <link rel="stylesheet" href="resources/css/bookDetail.css">
 </head>
 <body>
-   <jsp:include page="header.jsp"></jsp:include>
+   <c:choose>
+		<c:when test="${not empty sessionScope.email}">
+			<jsp:include page="loggedHeader.jsp"></jsp:include>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="header.jsp"></jsp:include>
+		</c:otherwise>
+	</c:choose>
    <div id="total-body">
       <!-- 여기에 로그인 여부 확인 하는 c:if문 넣어야됨 -->
       <!-- 책이미지 -->
@@ -33,7 +40,7 @@
       </div>
       <!-- 독후감리스트 -->
       <div id="report">
-         <c:if test="${not empty reportList">
+         <c:if test="${not empty reportList}">
             <!-- 현재 페이지 설정 -->
             <c:choose>
                <c:when test="${not empty param.pageNum}">
