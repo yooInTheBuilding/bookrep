@@ -39,6 +39,6 @@
 		ORDER BY r.report_time desc
 	</select>
 	<select id="getReportByIsbn" parameterType="java.lang.String" resultMap="ReportDTO">
-		SELECT * FROM report WHERE report_book_isbn = #{isbn}
+		SELECT * FROM report WHERE report_book_isbn = #{isbn} ORDER BY report_time DESC
 	</select>
 </mapper>
