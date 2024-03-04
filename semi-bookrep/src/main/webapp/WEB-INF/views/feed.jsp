@@ -101,7 +101,7 @@
 										<p>${report.report.title}</p>
 										<p>${report.report.userEmail}</p>
 										<p>Like: ${report.like}</p>
-										<a href="/reportDetail?id=${report.report.id}" target="_blank">독후감
+										<a href="/bookrep/report-detail?id=${report.report.id}" target="_blank">독후감
 											상세보기</a>
 									</div>
 								</div>

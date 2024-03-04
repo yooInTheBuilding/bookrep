@@ -67,9 +67,10 @@ public class ReportCService {
 	
 	public void saveBook(BookDTO bookDTO) {
 		log.info("saveBook()");
-		
-		bookDao.saveBook(bookDTO);
-		
+		BookDTO bookDTO2 = bookDao.getBookByIsbn(bookDTO.getIsbn());
+		if (bookDTO2 == null) {
+			bookDao.saveBook(bookDTO);
+		}
 	}
 	
 	public String setReport(HttpSession session, ReportDTO reportDTO, RedirectAttributes rttr) {
@@ -81,14 +82,11 @@ public class ReportCService {
 		if (email == null) {
 			msg = "로그인 먼저 하세요";
 			view = "redirect:sign-in";
-		}else if (email != reportDTO.getUserEmail()) {
-			msg = "허용되지 않은 사용자입니다";
-			view = "redirect:/";
 		} else {
 			try {
 				reportDao.setReport(reportDTO);
 				msg = "작성완료";
-				view = "redirect:showFeed?email=" + session.getAttribute("email");
+				view = "redirect:feed/" + session.getAttribute("email");
 			} catch (Exception e) {
 				e.printStackTrace();
 				msg = "다시 입력해주세요";
@@ -96,7 +94,7 @@ public class ReportCService {
 			}
 		}
 		
-		//rttr.addFlashAttribute(msg);
+		rttr.addFlashAttribute(msg);
 	
 		return view;
 	}
