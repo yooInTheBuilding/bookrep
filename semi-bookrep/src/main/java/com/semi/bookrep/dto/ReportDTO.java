@@ -2,10 +2,14 @@ package com.semi.bookrep.dto;
 
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReportDTO {
 	
 	private Long id;
@@ -22,10 +26,9 @@ public class ReportDTO {
 	@NonNull
 	private String content;
 	
-	@NonNull
 	private boolean publicBool;
 	
-	private LocalDateTime time = LocalDateTime.now();
+	private LocalDateTime time;
 	
 
 }

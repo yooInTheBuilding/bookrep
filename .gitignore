@@ -120,3 +120,11 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
+semi-bookrep/src/main/java/com/semi/bookrep/APIKEY.java
+<<<<<<< HEAD
+=======
+semi-bookrep/src/main/webapp/META-INF/maven/com/semi/bookrep/pom.properties
+Servers/Tomcat v9.0 Server at localhost-config/*
+semi-bookrep/src/main/webapp/WEB-INF/spring/root-context.xml
+>>>>>>> 4dc1725 (gitignore)
+*.jsp

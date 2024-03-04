@@ -34,7 +34,7 @@
 			</div>
 			<div class="buttons">
 				<c:choose>
-					<c:when test="${empty sessionScope.email}">
+					<c:when test="${empty sessionScope.loggedEmail}">
 						<div class="login-button">
 							<a href="/bookrep/sign-in"><button>로그인</button></a>
 						</div>
@@ -57,7 +57,7 @@
 	</header>
 </body>
 <script>
-	const moveToHome = () => {
+		const moveToHome = () => {
 
 		var email = "${sessionScope.email}";
 		
