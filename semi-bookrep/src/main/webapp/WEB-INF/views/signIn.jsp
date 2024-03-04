@@ -51,7 +51,7 @@
 		<fieldset>
 			<div class="sign-up-link">
 				<p>
-					Don't have an account? <a href="/bookrep/sign-up">Sign Up</a>
+					Don't have an account? <a href="/bookrep/sign-up">Sign Up</a> 
 				<p>
 			</div>
 		</fieldset>
