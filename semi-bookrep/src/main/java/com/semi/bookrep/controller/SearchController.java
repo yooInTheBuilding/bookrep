@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.dto.UserDTO;
@@ -27,7 +31,10 @@ public class SearchController {
 	private SearchService searchService;
 	
 	@GetMapping("search")
-	public String getTotalSearchByString(@RequestParam("keyword") String keyword, Model model) {
+	public String getTotalSearchByString(@RequestParam("keyword") String keyword,
+											Model model,
+											@RequestParam(required = false) Integer userPageNum,
+											@RequestParam(required = false) Integer bookPageNum) throws JsonProcessingException {
 		log.info("controller.getTotalSearchByString()");
 		
 		List<UserDTO> userList = searchService.getUserByString(keyword);
@@ -38,12 +45,53 @@ public class SearchController {
 		for (int i = 0; i < bookList.size(); i++) {
 			log.info(bookList.get(i).getName());
 		}
-		@SuppressWarnings("rawtypes")
-		List<PageDTO> userPageList = MainUtil.setPaging(userList, 5);
-		@SuppressWarnings("rawtypes")
-		List<PageDTO> bookPageList = MainUtil.setPaging(bookList, 5);
-		model.addAttribute("userList", userPageList);
-		model.addAttribute("bookList", bookPageList);
+		List<UserDTO> currentUserList;
+		List<BookDTO> currentBookList;
+		
+		if (userPageNum == null) {
+			currentUserList = MainUtil.setPagingUser(userList, 1);
+			model.addAttribute("currentUserPageNum", 1);
+		}else {
+			currentUserList = MainUtil.setPagingUser(userList, userPageNum);
+			model.addAttribute("currentUserPageNum", userPageNum);
+		}
+		if (bookPageNum == null) {
+			currentBookList = MainUtil.setPagingBook(bookList, 1);
+			model.addAttribute("currentBookPageNum", 1);
+		}else {
+			currentBookList = MainUtil.setPagingBook(bookList, bookPageNum);
+			model.addAttribute("currentBookPageNum", bookPageNum);
+		}
+		
+		model.addAttribute("userList", currentUserList);
+		model.addAttribute("bookList", currentBookList);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("totalUserSize", userList.size());
+		model.addAttribute("totalBookSize", bookList.size());
 		return "search";
+	}
+	
+	@PostMapping("user-result")
+	@ResponseBody
+	public String getUserResult(@RequestParam("keyword") String keyword, @RequestParam("pageNum") int pageNum) throws JsonProcessingException {
+		log.info("getUserResult()");
+		
+		List<UserDTO> userList = searchService.getUserByString(keyword);
+		
+		
+		String userListJson = new ObjectMapper().writeValueAsString(userList);
+		
+		return userListJson;
+	}
+	
+	@PostMapping("book-result")
+	@ResponseBody
+	public String getBookResult(@RequestParam("keyword") String keyword, @RequestParam("pageNum") int pageNum) throws JsonProcessingException {
+		log.info("getBookResult()");
+		
+		List<BookDTO> bookList = searchService.getBookByString(keyword);
+		String bookListJson = new ObjectMapper().writeValueAsString(bookList);
+		
+		return bookListJson;
 	}
 }

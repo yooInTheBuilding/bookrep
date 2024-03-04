@@ -3,8 +3,9 @@ package com.semi.bookrep.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.semi.bookrep.dto.BookDTO;
 import com.semi.bookrep.dto.PageDTO;
-
+import com.semi.bookrep.dto.UserDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,6 +33,34 @@ public class MainUtil {
 			pageDTOList.add(pageDTO);
 		}
 		return pageDTOList;
+	}
+
+	public static List<UserDTO> setPagingUser(List<UserDTO> userList, Integer userPageNum) {
+		log.info("setPagingUser()");
+		
+		int from = 6 * (userPageNum - 1);
+		int end;
+		if (from + 5 > userList.size() - 1) {
+			end = userList.size();
+		}else {
+			end = from + 6;
+		}
+		List<UserDTO> currentUserList = userList.subList(from, end);
+		return currentUserList;
+	}
+
+	public static List<BookDTO> setPagingBook(List<BookDTO> bookList, Integer bookPageNum) {
+		log.info("setPagingBook()");
+		
+		int from = 6 * (bookPageNum - 1);
+		int end;
+		if (from + 5 > bookList.size() - 1) {
+			end = bookList.size();
+		}else {
+			end = from + 6;
+		}
+		List<BookDTO> currentBookList = bookList.subList(from, end);
+		return currentBookList;
 	}
 }
 
