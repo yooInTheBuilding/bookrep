@@ -1,26 +1,26 @@
 package com.semi.bookrep.controller;
 
-
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.service.HomeService;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Controller
 @Slf4j
 public class HomeController {
-	
+
 	@Autowired
-	private HomeService homeService;
+	HomeService homeService;
 	
 	@GetMapping("/")
 	public String main() {
@@ -28,23 +28,22 @@ public class HomeController {
 	}
 	
 	@GetMapping("/home")
-	public String home() {
-		log.info("home 화면 출력()");
-		return "home1";
-	}
-	
-	@PostMapping("/home")
-	public String home(HttpSession session) {
-		
+	public String home(HttpSession session, Model model) {
+    
 		String email = (String) session.getAttribute("email");
+    
+		log.info(email);
 		
-		if(email != null) {
-			log.info("home2 출력() ");
-			return "redirect:/home";
+		if (email != null) {
+			log.info("home2");
+
+			List<PageDTO> pageList = homeService.getReportToHome(email);
+			
+			model.addAttribute("sessionItems", pageList);
+			return "home2";
 		} else {
-			return "home1";
+			log.info("home1");
+			return "redirect:/";
 		}
-		
 	}
-	
 }
