@@ -1,4 +1,3 @@
-User
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -15,7 +14,14 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 <link rel="stylesheet" href="resources/css/reportDetail.css">
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<c:choose>
+		<c:when test="${not empty sessionScope.email}">
+			<jsp:include page="loggedHeader.jsp"></jsp:include>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="header.jsp"></jsp:include>
+		</c:otherwise>
+	</c:choose>
 	<div id="total-body">
 		<div id="report-top">
 			<div class="r_title">${report.title}</div>
