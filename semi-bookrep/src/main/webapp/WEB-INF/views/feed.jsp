@@ -16,7 +16,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<c:choose>
+		<c:when test="${not empty sessionScope.email}">
+			<jsp:include page="loggedHeader.jsp"></jsp:include>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="header.jsp"></jsp:include>
+		</c:otherwise>
+	</c:choose>
 	<c:if test="${not empty sessionItems}">
 		<div id="total-body">
 			<!-- 

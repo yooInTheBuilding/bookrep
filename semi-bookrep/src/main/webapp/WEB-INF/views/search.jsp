@@ -15,7 +15,14 @@
 	
 </script>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<c:choose>
+	<c:when test="${not empty sessionScope.email}">
+		<jsp:include page="loggedHeader.jsp"></jsp:include>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="header.jsp"></jsp:include>
+	</c:otherwise>
+</c:choose>
 <div class="container">
     <h1 id="search-title">Search Results for "${keyword}"</h1>
 
