@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.container{
+	margin: 5%;
+}
+
+/* 전체 컨테이너 스타일 */
+.book-list {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	margin: 10px;
+}
+.book-list img{
+	z-index: -1;
+}
