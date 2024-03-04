@@ -16,7 +16,7 @@
 			<div class="profile">
 				<c:choose>
 					<c:when test="${not empty sessionScope.email}">
-						<a href="/bookrep/feed"><i class="fa fa-user-circle-o fa-2x"
+						<a href="/bookrep/feed/${sessionScope.email}"><i class="fa fa-user-circle-o fa-2x"
 							aria-hidden="true"></i></a>
 					</c:when>
 					<c:otherwise>
@@ -33,7 +33,7 @@
 			<div class="buttons">
 				<div class="search-box">
 					<form action="/bookrep/search" method="GET">
-						<input type="text" name="query" placeholder="검색어를 입력하세요">
+						<input type="text" name="keyword" placeholder="검색어를 입력하세요">
 						<button type="submit" class="search">search</button>
 					</form>
 				</div>

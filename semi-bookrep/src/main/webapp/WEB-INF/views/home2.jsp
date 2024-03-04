@@ -42,7 +42,7 @@
 					<c:forEach var="report" items="${page.objectList}">
 			<fieldset>
 						<div class="report-container">
-							<a href="/bookrep/feed/${userEmail}"><p>${report.userEmail}</p></a>
+							<a href="/bookrep/feed/${report.userEmail}"><p>${report.userEmail}</p></a>
 							<p>${report.title}</p>
 							<p>${report.content}</p>
 						</div>
