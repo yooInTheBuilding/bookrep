@@ -35,7 +35,7 @@
 	</update>
 	<select id="getReportOfFollowing" parameterType="java.lang.String" resultMap="ReportDTO">
 		SELECT r.* FROM report r, follow f
-		WHERE r.report_user_email = f.follower_email AND f.followee_email = #{email} 
+		WHERE r.report_user_email = f.follower_email AND f.followee_email = #{email} AND r.report_public = 1
 		ORDER BY r.report_time desc
 	</select>
 	<select id="getReportByIsbn" parameterType="java.lang.String" resultMap="ReportDTO">
