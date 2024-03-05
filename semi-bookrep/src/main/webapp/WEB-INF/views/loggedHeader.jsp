@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/loggedHeader.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/loggedHeader.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
@@ -16,8 +16,8 @@
 			<div class="profile">
 				<c:choose>
 					<c:when test="${not empty sessionScope.email}">
-						<a href="/bookrep/feed/${sessionScope.email}"><i class="fa fa-user-circle-o fa-2x"
-							aria-hidden="true"></i></a>
+						<a href="/bookrep/feed/${sessionScope.email}"><i
+							class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a>
 					</c:when>
 					<c:otherwise>
 						<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
@@ -25,10 +25,14 @@
 				</c:choose>
 			</div>
 			
+			<div class="write-button">
+				<button onclick="moveToWrite()">Write</button>
+			</div>
 
 			<div class="logo">
-				<img src="resources/images/bookrepLogo.png" alt="로고"
-					onclick="moveToHome()">
+				<img
+					src="<%=request.getContextPath()%>/resources/images/bookrepLogo.png"
+					alt="로고" onclick="moveToHome()">
 			</div>
 			<div class="buttons">
 				<div class="search-box">
@@ -58,7 +62,7 @@
 	
 	const moveToFeed = () => {
 		
-		var email1 = "${sessionScope.email}";
+		var email1 = "${sessionScope.email}"; 
 		
 		if(email1 != null){
 			location.href = "/bookrep/feed";
