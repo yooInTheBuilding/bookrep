@@ -10,4 +10,6 @@ public interface LikeDao {
    
    void removeLike(LikeDTO likeDTO);
 
+	int isLike(LikeDTO likeDTO);
+
 }
