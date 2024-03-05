@@ -52,7 +52,7 @@
 									style="height: 50px; display: none;">Unfollow</button>
 							</c:otherwise>
 						</c:choose>
-						<a href="/bookmark/${userEmail}"> <img class="bookmark-image"
+						<a href="/bookrep/bookmark/${userEmail}" target="_blank"> <img class="bookmark-image"
 							class="top-line-margin" alt="bookmark"
 							src="../resources/images/bookmark_icon_black.png"
 							style="width: 50px; height: 50px;"></a>
