@@ -41,6 +41,7 @@ public class ReportCController {
 		List<BookDTO> bookList = reportCService.getBookByAPI(keyword);
 		List<PageDTO> bookPageList = MainUtil.setPaging(bookList, 6);
 		model.addAttribute("bookList", bookPageList);
+		model.addAttribute("keyword", keyword);
 		return "bookSearch";
 	}
 	

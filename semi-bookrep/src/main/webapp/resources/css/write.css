@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body{
+	background-color: #F5F5F5;
+}
 
 .wrap {
 	display: flex;
