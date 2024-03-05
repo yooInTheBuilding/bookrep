@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>Feed</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/page.css">
-<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/feed.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -28,13 +26,17 @@
 			<jsp:include page="header.jsp"></jsp:include>
 		</c:otherwise>
 	</c:choose>
-	<div id="total-body">
-		<div class="user-info">
-			<div class="user-image-container">
-				<img
-					src="<%=request.getContextPath()%>/resources/images/${userImage}"
-					alt="UserImage">
-			</div>
+	<c:if test="${not empty sessionItems}">
+		<div id="total-body">
+			<!-- 
+		 	세션 연결 후 확인해 볼것.
+		 	유저정보들(팔로워 팔로잉, 북마크, 유저정보수정,
+		   -->
+
+			<div class="user-info">
+				<div class="user-image-container">
+					<img src="<%=request.getContextPath()%>/resources/images/${userImage}" alt="UserImage">
+				</div>
 				<div class="user-text-container">
 					<div class="top-line">
 						<div class="user-name">${userEmail}</div>
@@ -54,28 +56,27 @@
 							class="top-line-margin" alt="bookmark"
 							src="../resources/images/bookmark_icon_black.png"
 							style="width: 50px; height: 50px;"></a>
-            <br>
-				<div class="bottom-line">
-					<div class="bottom-line-margin">
-						<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
 					</div>
-					<div class="bottom-line-margin">
-						<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%"
-							target="_blank">Follower</a><span>${followerCnt}</span>
-					</div>
-					<div class="bottom-line-margin">
-						<a href="/bookrep/following/${userEmail}"
-							style="margin-right: 10%" target="_blank">Following</a><span>${followingCnt}</span>
+					<br>
+					<div class="bottom-line">
+						<div class="bottom-line-margin">
+							<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
+						</div>
+						<div class="bottom-line-margin">
+							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%" target="_blank">Follower</a><span>${followerCnt}</span>
+						</div>
+						<div class="bottom-line-margin">
+							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%" target="_blank">Following</a><span>${followingCnt}</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<hr class="separator">
+			<hr class="separator">
 
-		<br> <br>
+			<br> <br>
 
-		<c:if test="${not empty sessionItems}">
+
 			<!-- 현재 페이지 설정 -->
 			<c:choose>
 				<c:when test="${not empty param.pageNum}">
@@ -102,8 +103,8 @@
 										<p>${report.report.title}</p>
 										<p>${report.report.userEmail}</p>
 										<p>Like: ${report.like}</p>
-										<a href="/bookrep/report-detail?id=${report.report.id}"
-											target="_blank">독후감 상세보기</a>
+										<a href="/bookrep/report-detail?id=${report.report.id}" target="_blank">독후감
+											상세보기</a>
 									</div>
 								</div>
 							</c:forEach>
@@ -143,13 +144,13 @@
 				<!-- 마지막 버튼 -->
 				<a href="?pageNum=${sessionItems.size()}" class="page-link">▶|</a>
 			</div>
-		</c:if>
-	</div>
+		</div>
+	</c:if>
 </body>
 
 <script type="text/javascript">
 	function showModify() {
-		window.location.href = "/bookrep/update";
+		window.location.href = "/${userEmali}/update";
 	}
 
 	$(document).ready(function() {
