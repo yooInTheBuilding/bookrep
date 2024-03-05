@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.bookrep.dto.PageDTO;
 import com.semi.bookrep.dto.UserDTO;
@@ -82,6 +83,7 @@ public class FollowController {
 	}
 	
 	@PostMapping("follow")
+	@ResponseBody
 	public String follow(@RequestParam("email") String followerEmail, HttpSession session) {
 		log.info("follow()");
 		
@@ -93,6 +95,7 @@ public class FollowController {
 	}
 	
 	@PostMapping("unfollow")
+	@ResponseBody
 	public String unfollow(@RequestParam("email") String followerEmail, HttpSession session) {
 		log.info("unfollow()");
 		

@@ -28,7 +28,7 @@
 		<!-- 검색어 입력 폼 -->
 		<form action="<c:url value='/book-search' />" method="get">
 			<div class="form-group">
-				<label for="searchKeyword">검색어</label> <input type="text"
+				<input type="text"
 					id="searchKeyword" name="keyword" class="form-control" required>
 				<button type="submit" class="btn btn-info">검색</button>
 			</div>
@@ -73,7 +73,6 @@
 												<input type="hidden" name="image" value="${book.image}">
 												<input type="submit" value="Select">
 											</form>
-								
 										</div>
 									</c:forEach>
 								</div>
@@ -92,6 +91,7 @@
 					<a href="?keyword=${keyword}&pageNum=${currentPageNum - 5}"
 						class="page-link">이전</a>
 				</c:if>
+				
 
 				<!-- 페이지 번호 5개씩 표시 -->
 				<c:forEach var="i"

@@ -9,6 +9,7 @@ body {
 header {
 	position: sticky;
 	top: 0;
+	z-index: 10;
 }
 
 .header {
@@ -22,14 +23,16 @@ header {
 
 .header .logo {
 	text-align: center;
+	flex-grow: 1;
+	flex-shrink: 0;
 }
 
 .header .logo img {
 	width: 40px;
-	padding-left: 280px;
+	padding-left: 250px;
 }
 
-.header .profile {
+.header .profile, .header .buttons, .header .write-button {
 	display: flex;
 	align-items: center;
 }
@@ -73,4 +76,14 @@ header {
 	width: 750px;
 	height: 750px;
 	padding-top: 50px;
+}
+
+.write-button button {
+	margin-left: 10px;
+	padding: 8px 12px;
+	background-color: #555;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
 }
