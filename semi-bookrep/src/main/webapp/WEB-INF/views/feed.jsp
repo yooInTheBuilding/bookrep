@@ -150,7 +150,7 @@
 
 <script type="text/javascript">
 	function showModify() {
-		window.location.href = "/${userEmali}/update";
+		window.location.href = "/bookrep/update";
 	}
 
 	$(document).ready(function() {
