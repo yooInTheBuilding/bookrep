@@ -82,9 +82,9 @@ public class SignService {
 		map.put("name", name);
 		String password = userDao.getPassword(map);
 		if (password == null || password.isEmpty()) {
-			result = "일치하는 계정이 없습니다";
+			result = "No matching account";
 		}else {
-			result = "비밀번호는 " + password + "입니다";
+			result = "Your password is " + password;
 		}
 		
 		return result;
