@@ -40,13 +40,15 @@
 			<c:if test="${page.pageNum eq currentPageNum}">
 				<div id="report-container">
 					<c:forEach var="report" items="${page.objectList}">
-			<fieldset>
-						<div class="report-container">
-							<a href="/bookrep/feed/${report.userEmail}"><p>${report.userEmail}</p></a>
-							<p>${report.title}</p>
-							<p>${report.content}</p>
-						</div>
-				</fieldset>
+						<fieldset>
+							<div class="report-container">
+								<a href="/bookrep/feed/${report.userEmail}"><p>${report.userEmail}</p></a>
+								<div class="report-detail" onclick="moveToReportDetail(${report.id})">
+									<p>${report.title}</p>
+									<p>${report.content}</p>
+								</div>
+							</div>
+						</fieldset>
 					</c:forEach>
 				</div>
 			</c:if>
@@ -85,4 +87,10 @@
 		<a href="?pageNum=${sessionItems.size()}" class="page-link">▶|</a>
 	</div>
 </body>
+
+<script type="text/javascript">
+function moveToReportDetail(reportId) {
+	location.href = "/bookrep/report-detail?id=" + reportId;
+}
+</script>
 </html>
