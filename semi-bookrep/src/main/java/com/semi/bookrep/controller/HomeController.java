@@ -60,8 +60,8 @@ public class HomeController {
 	@ResponseBody
 	public String getImage(@RequestParam("email") String email) {
 		log.info("getImage()");
-		
-		return feedService.getUserImage(email);
+		String imageAjax = feedService.getUserImage(email);
+		return imageAjax;
 	}
 }
 
