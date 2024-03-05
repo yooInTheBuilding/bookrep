@@ -28,6 +28,8 @@
 			<jsp:include page="header.jsp"></jsp:include>
 		</c:otherwise>
 	</c:choose>
+		<input type="hidden" value="${isFollowing}" id="isFollowing">
+		<input type="hidden" value="${userEmail}" id="currentEmail">
 		<div id="total-body">
 			<!-- 
 		 	세션 연결 후 확인해 볼것.
@@ -47,10 +49,13 @@
 									style="height: 50px;">Modifying</button>
 							</c:when>
 							<c:otherwise>
-								<button id="followBtn" onclick="return isFollowing()"
-									style="height: 50px;">Follow</button>
-								<button id="unfollowBtn" class="top-line-margin"
-									style="height: 50px; display: none;">Unfollow</button>
+								<button id="followBtn"
+									style="height: 50px;">
+									<c:choose>
+									<c:when test="${isFollowing}">Unfollow</c:when>
+									<c:when test="${!isFollowing}">Follow</c:when>
+									</c:choose>
+									</button>
 							</c:otherwise>
 						</c:choose>
 						<a href="/bookrep/bookmark/${userEmail}" target="_blank"> <img class="bookmark-image"
@@ -64,10 +69,10 @@
 							<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%" target="_blank">Follower</a><span>${followerCnt}</span>
+							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%" target="_blank">Follower</a><span id="follower">${followerCnt}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%" target="_blank">Following</a><span>${followingCnt}</span>
+							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%" target="_blank">Following</a><span id="following">${followingCnt}</span>
 						</div>
 					</div>
 				</div>
@@ -152,30 +157,43 @@
 	function showModify() {
 		window.location.href = "/bookrep/update";
 	}
+	var userEmail = document.getElementById("currentEmail").value;
+	console.log(userEmail);
+	var isFollowing = JSON.parse(document.getElementById("isFollowing").value);
+	console.log(isFollowing);
+	var button = document.getElementById("followBtn");
+	console.log(button.innerText);
+	var follower = document.getElementById("follower");
+	var followerCount = parseInt(follower.innerText);
+	console.log(typeof followerCount === 'number');
 
-	$(document).ready(function() {
-		// Follow 버튼 클릭 시
 		$("#followBtn").on("click", function() {
-			var userEmail = $("#userEmail").val();
-			follow(userEmail);
-		});
-
-		// Unfollow 버튼 클릭 시
-		$("#unfollowBtn").on("click", function() {
-			var userEmail = $("#userEmail").val();
-			unfollow(userEmail);
+		
+			if(isFollowing){
+				unfollow(userEmail);
+				isFollowing = false;
+				button.innerText = 'Follow';
+				followerCount = followerCount - 1;
+				follower.innerText = followerCount;
+				
+			}else{
+				follow(userEmail);
+				isFollowing = true;
+				button.innerText = 'Unfollow';
+				followerCount = followerCount + 1;
+				follower.innerText = followerCount;
+			}
 		});
 
 		function follow(userEmail) {
 			$.ajax({
-				type : "POST",
-				url : "/follow",
+				type : 'post',
+				url : '/bookrep/follow',
 				data : {
 					email : userEmail
 				},
 				success : function() {
 					// 팔로우 성공 시 버튼 업데이트
-					updateButtons(true);
 				},
 				error : function() {
 					console.error("팔로우 실패");
@@ -185,14 +203,14 @@
 
 		function unfollow(userEmail) {
 			$.ajax({
-				type : "POST",
-				url : "/unfollow",
+				type : 'post',
+				url : '/bookrep/unfollow',
 				data : {
 					email : userEmail
 				},
 				success : function() {
 					// 언팔로우 성공 시 버튼 업데이트
-					updateButtons(false);
+					
 				},
 				error : function() {
 					console.error("언팔로우 실패");
@@ -211,6 +229,5 @@
 				$("#unfollowBtn").hide();
 			}
 		}
-	});
 </script>
 </html>
