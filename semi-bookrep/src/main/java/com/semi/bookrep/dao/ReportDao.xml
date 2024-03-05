@@ -15,7 +15,7 @@
 	<select id="getReportSummaryById" parameterType="String" resultMap="ReportDTO">
 		SELECT *
 		FROM report
-		WHERE report_user_email = #{userEmail}
+		WHERE report_user_email = #{userEmail} ORDER BY report_time DESC
 	</select>
 	<insert id="setReport" parameterType="com.semi.bookrep.dto.ReportDTO">
 		INSERT report (report_user_email, report_book_isbn, report_title, report_content, report_public)
