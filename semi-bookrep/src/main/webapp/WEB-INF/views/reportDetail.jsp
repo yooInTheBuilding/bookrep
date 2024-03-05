@@ -9,7 +9,7 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Report Detail</title>
 <link rel="stylesheet" href="resources/css/page.css">
 <link rel="stylesheet" href="resources/css/reportDetail.css">
 </head>
@@ -35,39 +35,6 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 		<br>
 		<div id="report-body">
 			<div class="r_content">${report.content}</div>
-			<!-- 수정 폼 시작 -->
-			<div id="update-form-container" style="display: none;">
-				<form action="apply-update" method="post">
-					<input type="hidden" name="id" value="${report.id}">
-					<div id="report-top">
-						<div class="r_title">
-							<input type="text" name="title" value="${report.title}">
-						</div>
-						<div>
-							<div class="r_user">${report.userEmail}</div>
-							<div class="r_date">${report.time}</div>
-						</div>
-					</div>
-					<br>
-					<hr class="separator">
-					<br>
-					<div id="report-body">
-						<div class="r_content">
-							<textarea name="content">${report.content}</textarea>
-						</div>
-					</div>
-					<br>
-					<hr class="separator">
-					<br>
-					<div id="report-bottom">
-						<div id="report_bottom_left">
-							<!-- 수정 완료 버튼 -->
-							<button type="submit" class="update-btn">Update</button>
-						</div>
-					</div>
-				</form>
-			</div>
-			<!-- 수정 폼 끝 -->
 			<div class="comment">
 				<!-- 댓글 입력 창 & 입력 버튼 -->
 				<form action="comment" method="post">
@@ -101,9 +68,11 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 									<c:choose>
 										<c:when test="${not empty page.objectList}">
 											<c:forEach var="comment" items="${page.objectList}">
-												<a href="feed/${comment.userEmail}" class="c_user">${comment.userEmail}</a>
+												<div class="c_top">
+													<a href="feed/${comment.userEmail}" class="c_user">${comment.userEmail}</a>
+													<p class="c_time">${comment.time}</p>
+												</div>
 												<p class="c_content">${comment.content}</p>
-												<p class="c_time">${comment.time}</p>
 												<br>
 											</c:forEach>
 										</c:when>
@@ -147,17 +116,17 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 					<div>${likeValue}</div>
 				</div>
 				<button class="update-btn"
-					onclick="location.href='report-update?id=${report.id}'">Update</button>
+					onclick="location.href='/bookrep/report-update?id=${report.id}'">Update</button>
 			</div>
 			<div id="report_bottom_right">
 				<div class="page">
 					<c:if test="${not empty commentList}">
 						<!-- 처음 버튼 -->
-						<a href="?pageNum=1" class="page-link">|◀</a>
+						<a href="?id=${report.id}&pageNum=1" class="page-link">|◀</a>
 
 						<!-- 이전 버튼 -->
 						<c:if test="${currentPageNum > 3}">
-							<a href="?pageNum=${currentPageNum - 5}" class="page-link">이전</a>
+							<a href="?id=${report.id}&pageNum=${currentPageNum - 5}" class="page-link">이전</a>
 						</c:if>
 
 						<!-- 페이지 번호 5개씩 표시 -->
@@ -169,18 +138,18 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 									<span class="page-link">${i}</span>
 								</c:when>
 								<c:otherwise>
-									<a href="?pageNum=${i}" class="page-link">${i}</a>
+									<a href="?id=${report.id}&pageNum=${i}" class="page-link">${i}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 
 						<!-- 다음 버튼 -->
 						<c:if test="${currentPageNum + 2 < commentList.size()}">
-							<a href="?pageNum=${currentPageNum + 3}" class="page-link">다음</a>
+							<a href="?id=${report.id}&pageNum=${currentPageNum + 3}" class="page-link">다음</a>
 						</c:if>
 
 						<!-- 마지막 버튼 -->
-						<a href="?pageNum=${commentList.size()}" class="page-link">▶|</a>
+						<a href="?id=${report.id}&pageNum=${commentList.size()}" class="page-link">▶|</a>
 					</c:if>
 				</div>
 			</div>
@@ -217,11 +186,6 @@ function toggleLike(reportId) {
             console.error("Error toggling like:", error);
         }
     });
-}
-
-function showUpdateForm() {
-    document.getElementById('update-form-container').style.display = 'block';
-    document.getElementById('report-detail-container').style.display = 'none';
 }
 </script>
 </html>

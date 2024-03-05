@@ -12,7 +12,7 @@
 	</resultMap>
 
 	<select id="getCommentByReportId" parameterType="java.lang.Long" resultMap="CommentDTO">
-		SELECT * FROM comment WHERE comment_report_id = ${id}
+		SELECT * FROM comment WHERE comment_report_id = ${id} ORDER BY comment_time DESC 
 	</select>
 	
 	<insert id="setComment" parameterType="com.semi.bookrep.dto.CommentDTO">

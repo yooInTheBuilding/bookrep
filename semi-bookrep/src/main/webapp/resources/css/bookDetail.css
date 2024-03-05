@@ -1,7 +1,10 @@
 @charset "UTF-8";
+body{
+	background-color: #F5F5F5;
+}
 
 #total-body {
-	margin: 5%;
+	margin: 2%;
 }
 
 #br-body {
@@ -34,14 +37,15 @@
 }
 
 #report {
-	background-color: lightgrey;
-	width: 50%
+	background-color: #a6a6a6;
+	width: 60%
 }
 
 #report-container a #report_container p {
 	margin: 0 0 10px;
 	text-decoration: none;
 	margin: 5px;
+	color: white;
 }
 
 .report-title a {
