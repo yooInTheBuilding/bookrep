@@ -13,6 +13,8 @@
 	href="<%=request.getContextPath()%>/resources/css/feed.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
 <script type="text/javascript">
 	

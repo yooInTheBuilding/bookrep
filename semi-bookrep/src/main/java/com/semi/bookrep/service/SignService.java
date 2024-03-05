@@ -120,8 +120,9 @@ public class SignService {
 		String image = null;
 		String original = null;
 		
-		String realPath = session.getServletContext().getRealPath("/");
-		realPath += "resources/upload/";
+		String realPath = "C:/Users/dbals/git/bookrep/semi-bookrep/src/main/webapp/";
+		log.info(realPath);
+		realPath += "resources/images/";
 		File folder = new File(realPath);
 		if(folder.isDirectory() == false){
 		folder.mkdir();

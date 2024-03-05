@@ -11,6 +11,8 @@
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/feed.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
 <script type="text/javascript">
 	
@@ -36,8 +38,12 @@
 			<div class="page-container">
 				<ul>
 					<c:forEach items="${userList}" var="user">
-						<li class="display"><a href="feed/${user.email}">
-								${user.name} </a></li>
+						<li class="display">
+						<a href="feed/${user.email}">
+								${user.name} </a>
+						<a href="feed/${user.email}">
+								<img src="<%=request.getContextPath()%>/resources/images/${user.image}"> </a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -66,8 +72,12 @@
 			<div class="page-container">
 				<ul>
 					<c:forEach items="${bookList}" var="book">
-						<li class="display"><a href="book-detail?isbn=${book.isbn}">
-								${book.name} </a></li>
+						<li class="display">
+							<a href="book-detail?isbn=${book.isbn}">
+								${book.name} </a>
+							<a href="book-detail?isbn=${book.isbn}">
+								<img src="${book.image}"> </a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
