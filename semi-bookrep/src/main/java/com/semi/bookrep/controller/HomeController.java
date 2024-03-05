@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.bookrep.dto.PageDTO;
+import com.semi.bookrep.service.FeedService;
 import com.semi.bookrep.service.HomeService;
 
 
@@ -23,7 +26,10 @@ public class HomeController {
 
 
 	@Autowired
-	HomeService homeService;
+	private HomeService homeService;
+	
+	@Autowired
+	private FeedService feedService;
 	
 	@GetMapping("/")
 	public String main() {
@@ -48,6 +54,14 @@ public class HomeController {
 			log.info("home1");
 			return "redirect:/";
 		}
+	}
+	
+	@PostMapping("get-image")
+	@ResponseBody
+	public String getImage(@RequestParam("email") String email) {
+		log.info("getImage()");
+		
+		return feedService.getUserImage(email);
 	}
 }
 
