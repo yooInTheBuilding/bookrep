@@ -11,6 +11,8 @@
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/feed.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
 <script type="text/javascript">
 	

@@ -12,6 +12,8 @@
 	href="<%=request.getContextPath()%>/resources/css/feed.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -26,7 +28,6 @@
 			<jsp:include page="header.jsp"></jsp:include>
 		</c:otherwise>
 	</c:choose>
-	<c:if test="${not empty sessionItems}">
 		<div id="total-body">
 			<!-- 
 		 	세션 연결 후 확인해 볼것.
@@ -145,7 +146,6 @@
 				<a href="?pageNum=${sessionItems.size()}" class="page-link">▶|</a>
 			</div>
 		</div>
-	</c:if>
 </body>
 
 <script type="text/javascript">
