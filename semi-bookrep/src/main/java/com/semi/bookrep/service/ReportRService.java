@@ -57,10 +57,10 @@ public class ReportRService {
       
       LikeDTO likeDTO = new LikeDTO(email, id);
       
-      boolean isLiked = this.getLikeValueByReportId(id) > 0;
+      int likeValue = likeDao.isLike(likeDTO);
       
        // 좋아요 토글
-       if (isLiked) {
+       if (likeValue > 0) {
            likeDao.removeLike(likeDTO);
        } else {
            likeDao.setLike(likeDTO);

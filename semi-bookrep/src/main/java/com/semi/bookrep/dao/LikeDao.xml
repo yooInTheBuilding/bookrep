@@ -12,4 +12,7 @@
    <delete id="removeLike" parameterType="com.semi.bookrep.dto.LikeDTO">
     DELETE FROM `like` WHERE like_user_email = #{userEmail} AND like_report_id = #{reportId}
    </delete>
+   <select id="isLike" parameterType="com.semi.bookrep.dto.LikeDTO" resultType="int">
+   		SELECT count(*) FROM `like` WHERE like_user_email = #{userEmail} AND like_report_id = #{reportId}
+   </select>
 </mapper>
