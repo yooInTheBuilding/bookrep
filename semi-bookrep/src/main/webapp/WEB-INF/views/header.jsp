@@ -13,21 +13,6 @@
 <body>
 	<header>
 		<div class="header">
-			<div class="profile">
-				<c:choose>
-					<c:when test="${not empty sessionScope.email}">
-						<a href="/bookrep/feed"><i class="fa fa-user-circle-o fa-2x"
-							aria-hidden="true"></i></a>
-						<!-- </div> -->
-					</c:when>
-					<c:otherwise>
-						<!-- <div class="profile"> -->
-						<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
-			</c:otherwise>
-			</c:choose>
-			</div>
-
-
 			<div class="logo">
 				<img src="resources/images/bookrepLogo.png" alt="로고"
 					onclick="return moveToHome()">

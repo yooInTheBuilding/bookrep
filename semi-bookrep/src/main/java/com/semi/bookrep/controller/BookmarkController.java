@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.semi.bookrep.dto.BookDTO;
@@ -22,14 +23,22 @@ public class BookmarkController {
 	@Autowired
 	private BookmarkService bookmarkService;
 	
-	@GetMapping("bookmark")
-	public String showBookmark(@RequestParam("email") String email, Model model) {
+	@GetMapping("bookmark/{email}")
+	public String showBookmark(@PathVariable String email,
+								Model model,
+								@RequestParam(required = false) Integer pageNum) {
 		log.info("showBookmark()");
 		
 		List<BookDTO> bookList = bookmarkService.getBookmarkByEmail(email);
-		List<PageDTO> bookPageList = MainUtil.setPaging(bookList, 6);
-		model.addAttribute("bookmarkList", bookPageList);
-		
+		Integer currentPageNum = 1;
+		if (pageNum != null) {
+			currentPageNum = pageNum;
+		}
+		List<BookDTO> currentBookList = MainUtil.setPagingBook(bookList, currentPageNum);
+		model.addAttribute("bookmarkList", currentBookList);
+		model.addAttribute("currentPageNum", currentPageNum);
+		model.addAttribute("email", email);
+		model.addAttribute("totalBookSize", bookList.size());
 		return "bookmark";
 	}
 }

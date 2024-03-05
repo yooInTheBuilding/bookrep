@@ -15,6 +15,10 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous">
+	</script>
 <body>
 	<c:choose>
 		<c:when test="${not empty sessionScope.email}">
@@ -31,27 +35,26 @@
 					src="<%=request.getContextPath()%>/resources/images/${userImage}"
 					alt="UserImage">
 			</div>
-			<div class="user-text-container">
-				<div class="top-line">
-					<div class="user-name">${userEmail}</div>
-					<c:choose>
-						<c:when test="${isCurrentUser}">
-							<button id="modifyBtn" onclick="showModify()"
-								style="height: 50px;">Modifying</button>
-						</c:when>
-						<c:otherwise>
-							<button id="followBtn" onclick="return isFollowing()"
-								style="height: 50px;">Follow</button>
-							<button id="unfollowBtn" class="top-line-margin"
-								style="height: 50px; display: none;">Unfollow</button>
-						</c:otherwise>
-					</c:choose>
-					<a href="/bookmark/${userEmail}"> <img class="bookmark-image"
-						class="top-line-margin" alt="bookmark"
-						src="../resources/images/bookmark_icon_black.png"
-						style="width: 50px; height: 50px;"></a>
-				</div>
-				<br>
+				<div class="user-text-container">
+					<div class="top-line">
+						<div class="user-name">${userEmail}</div>
+						<c:choose>
+							<c:when test="${isCurrentUser}">
+								<button id="modifyBtn" onclick="showModify()"
+									style="height: 50px;">Modifying</button>
+							</c:when>
+							<c:otherwise>
+								<button id="followBtn" onclick="return isFollowing()"
+									style="height: 50px;">Follow</button>
+								<button id="unfollowBtn" class="top-line-margin"
+									style="height: 50px; display: none;">Unfollow</button>
+							</c:otherwise>
+						</c:choose>
+						<a href="/bookrep/bookmark/${userEmail}" target="_blank"> <img class="bookmark-image"
+							class="top-line-margin" alt="bookmark"
+							src="../resources/images/bookmark_icon_black.png"
+							style="width: 50px; height: 50px;"></a>
+            <br>
 				<div class="bottom-line">
 					<div class="bottom-line-margin">
 						<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>

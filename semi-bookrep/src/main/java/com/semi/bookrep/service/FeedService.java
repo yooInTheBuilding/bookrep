@@ -33,10 +33,10 @@ public class FeedService {
 	@Autowired
 	UserDao userDao;
 
-	public List<PageDTO> getReportSummaryById(String userEmail) {
+	public List<PageDTO> getReportSummaryById(String userEmail, String loggedInUserEmail) {
 
 		log.info("getRepostSummarybyId()");
-		
+		log.info(userEmail + " and " + loggedInUserEmail);
 		List<ReportDTO> userReports = new ArrayList<>();
 		
 		log.info("getReportSummaryById() 진입시도");
@@ -58,11 +58,13 @@ public class FeedService {
 	            int likeValue = reportRService.getLikeValueByReportId(reportDTO.getId());
 	            
 	            Map<String, Object> map = new HashMap<String, Object>();
-	            map.put("report", reportDTO);
-	            map.put("image", image);
-	            map.put("like", likeValue);
+	            if (userEmail.equals(loggedInUserEmail) || reportDTO.isPublicBool()) {
+	            	map.put("report", reportDTO);
+		            map.put("image", image);
+		            map.put("like", likeValue);
+		            summaryList.add(map);
+				}
 	            
-	            summaryList.add(map);
 	            log.info("잘 가져옴");
 	         }
 	      } catch (Exception e) {
