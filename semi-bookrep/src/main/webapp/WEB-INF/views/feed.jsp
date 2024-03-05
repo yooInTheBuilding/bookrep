@@ -33,7 +33,7 @@
 
 			<div class="user-info">
 				<div class="user-image-container">
-					<img src="${userImage}" alt="UserImage">
+					<img src="<%=request.getContextPath()%>/resources/images/${userImage}" alt="UserImage">
 				</div>
 				<div class="user-text-container">
 					<div class="top-line">
@@ -61,10 +61,10 @@
 							<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/follower/${userEmail}" style="margin-right: 10%">Follower</a><span>${followerCnt}</span>
+							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%" target="_blank">Follower</a><span>${followerCnt}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/following/${userEmail}" style="margin-right: 10%">Following</a><span>${followingCnt}</span>
+							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%" target="_blank">Following</a><span>${followingCnt}</span>
 						</div>
 					</div>
 				</div>

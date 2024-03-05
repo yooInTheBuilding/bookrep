@@ -65,7 +65,15 @@
 											<p>제목: ${book.name}</p>
 											<p>저자: ${book.author}</p>
 											<!-- 선택 버튼 -->
-											<button type="button" onclick="submitSelectedBook(${book})">Select</button>
+											<form action="<c:url value='/apply' />" method="get">
+												<input type="hidden" name="name" value="${book.name}">
+												<input type="hidden" name="author" value="${book.author}">
+												<input type="hidden" name="publisher" value="${book.publisher}">
+												<input type="hidden" name="isbn" value="${book.isbn}">
+												<input type="hidden" name="image" value="${book.image}">
+												<input type="submit" value="Select">
+											</form>
+								
 										</div>
 									</c:forEach>
 								</div>
