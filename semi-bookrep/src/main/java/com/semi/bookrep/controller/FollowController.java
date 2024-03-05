@@ -82,7 +82,7 @@ public class FollowController {
 		return "follower";
 	}
 	
-	@PostMapping("follow")
+	@PostMapping("/follow")
 	@ResponseBody
 	public String follow(@RequestParam("email") String followerEmail, HttpSession session) {
 		log.info("follow()");
@@ -94,7 +94,7 @@ public class FollowController {
 		return "redirect:feed/" + followerEmail;
 	}
 	
-	@PostMapping("unfollow")
+	@PostMapping("/unfollow")
 	@ResponseBody
 	public String unfollow(@RequestParam("email") String followerEmail, HttpSession session) {
 		log.info("unfollow()");
