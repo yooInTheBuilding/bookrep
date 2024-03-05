@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.semi.bookrep.dao.FollowDao;
+import com.semi.bookrep.dao.UserDao;
 import com.semi.bookrep.dto.FollowDTO;
+import com.semi.bookrep.dto.UserDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,6 +19,9 @@ public class FollowService {
 
 	@Autowired
 	private FollowDao followDao;
+	
+	@Autowired
+	private UserDao userDao;
 
 	public Integer getFollowerValueByEmail(String userEmail) {
 		
@@ -90,5 +95,10 @@ public class FollowService {
 		}else {
 			return true;
 		}
+	}
+
+	public UserDTO getUserByEmail(String userEmail) {
+		log.info("getUserByEmail()");
+		return userDao.showModify(userEmail);
 	}
 }

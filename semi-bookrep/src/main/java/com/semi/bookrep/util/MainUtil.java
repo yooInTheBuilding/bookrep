@@ -62,5 +62,20 @@ public class MainUtil {
 		List<BookDTO> currentBookList = bookList.subList(from, end);
 		return currentBookList;
 	}
+
+	public static List<String> setPagingFollow(List<String> followingList, Integer currentPage) {
+		log.info("setPagingFollow()");
+		
+		int from = 6 * (currentPage - 1);
+		int end;
+		if (from + 5 > followingList.size() - 1) {
+			end = followingList.size();
+		}else {
+			end = from + 6;
+		}
+		List<String> currentFollowingList = followingList.subList(from, end);
+		
+		return currentFollowingList;
+	}
 }
 
