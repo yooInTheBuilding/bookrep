@@ -13,6 +13,10 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous">
+	</script>
 <body>
 	<c:choose>
 		<c:when test="${not empty sessionScope.email}">
@@ -48,7 +52,7 @@
 									style="height: 50px; display: none;">Unfollow</button>
 							</c:otherwise>
 						</c:choose>
-						<a href="/bookmark/${userEmail}"> <img class="bookmark-image"
+						<a href="/bookrep/bookmark/${userEmail}" target="_blank"> <img class="bookmark-image"
 							class="top-line-margin" alt="bookmark"
 							src="../resources/images/bookmark_icon_black.png"
 							style="width: 50px; height: 50px;"></a>

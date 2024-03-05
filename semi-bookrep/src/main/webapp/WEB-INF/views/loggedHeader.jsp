@@ -10,14 +10,17 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous">
+	</script>
 <body>
 	<header>
 		<div class="header">
 			<div class="profile">
 				<c:choose>
 					<c:when test="${not empty sessionScope.email}">
-						<a href="/bookrep/feed/${sessionScope.email}"><i
-							class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a>
+						<a href="/bookrep/feed/${sessionScope.email}" id="userImage"></a>
 					</c:when>
 					<c:otherwise>
 						<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
@@ -49,6 +52,23 @@
 	</header>
 </body>
 <script>
+	var logggggggggggemail = "${sessionScope.email}";
+	var userImage = document.getElementById("userImage");
+	$.ajax({
+		url : '<%=request.getContextPath()%>/get-image',
+		type : 'post', 
+		data : {
+			email : logggggggggggemail
+		},
+		success : function(imageAjax) { //컨트롤러에서 넘어온 cnt값을 받는다 
+			console.log(imageAjax);
+			var imagePath = '<%=request.getContextPath()%>/resources/images/' + imageAjax;
+			userImage.innerHTML = '<img src="' + imagePath + '">';
+		},
+		error : function() {
+			alert("에러입니다");
+		}
+	});
 	const moveToHome = () => {
 
 		var email = "${sessionScope.email}";
