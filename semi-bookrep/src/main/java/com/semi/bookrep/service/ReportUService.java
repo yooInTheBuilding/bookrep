@@ -23,11 +23,11 @@ public class ReportUService {
 		
 		String view = null;
 		String email = (String)session.getAttribute("email");
-		if (email != reportDTO.getUserEmail()) {
+		if (!email.equals(reportDTO.getUserEmail())) {
 			view = "redirect:report-detail?id=" + reportDTO.getId();
 		}else {
 			model.addAttribute("report", reportDTO);
-			view = "update";
+			view = "reportUpdate";
 		}
 		
 		return view;
