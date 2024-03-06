@@ -16,12 +16,11 @@ header {
 	color: #fff;
 	padding: 10px 20px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 }
 
 .header .logo {
-	text-align: center;
+	margin: 0 auto;
 }
 
 .header .logo img {
@@ -30,8 +29,7 @@ header {
 }
 
 .header .profile {
-	display: flex;
-	align-items: center;
+	margin-left: auto;
 }
 
 .header .profile img {
@@ -43,6 +41,8 @@ header {
 .header .buttons {
 	display: flex;
 	align-items: center;
+	position: absolute;
+	right: 20px;
 }
 
 .header .buttons button {

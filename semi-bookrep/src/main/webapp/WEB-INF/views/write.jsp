@@ -29,7 +29,6 @@
 			<form action="<c:url value='/book-search' />" method="get"
 				accept-charset="UTF-8">
 				<div class="form-group">
-					<label for="searchKeyword">책 검색</label>
 					<input type="text" id="searchKeyword" name="keyword" class="form-control" required>
 					<button type="submit" class="btn btn-info">책 검색</button>
 				</div>

@@ -45,12 +45,10 @@
 						<div class="user-name">${userEmail}</div>
 						<c:choose>
 							<c:when test="${isCurrentUser}">
-								<button id="modifyBtn" onclick="showModify()"
-									style="height: 50px;">Modifying</button>
+								<button class="modify-btn" id="modifyBtn" onclick="showModify()">Modifying</button>
 							</c:when>
 							<c:otherwise>
-								<button id="followBtn"
-									style="height: 50px;">
+								<button id="followBtn">
 									<c:choose>
 									<c:when test="${isFollowing}">Unfollow</c:when>
 									<c:when test="${!isFollowing}">Follow</c:when>
@@ -61,7 +59,7 @@
 						<a href="/bookrep/bookmark/${userEmail}" target="_blank"> <img class="bookmark-image"
 							class="top-line-margin" alt="bookmark"
 							src="../resources/images/bookmark_icon_black.png"
-							style="width: 50px; height: 50px;"></a>
+							style="width: 30px; height: 30px;"></a>
 					</div>
 					<br>
 					<div class="bottom-line">
