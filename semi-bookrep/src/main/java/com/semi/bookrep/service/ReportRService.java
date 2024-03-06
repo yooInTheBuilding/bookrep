@@ -76,5 +76,14 @@ public class ReportRService {
       commentDTO.setUserEmail(email);
       commentDao.setComment(commentDTO);
    }
+   
+   public Integer isLike(String email, Long id) {
+	   
+	   LikeDTO likeDTO = new LikeDTO(email, id);
+	   
+	   int isLike = likeDao.isLike(likeDTO);
+	   
+	   return isLike;
+   }
 
 }

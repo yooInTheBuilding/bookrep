@@ -23,6 +23,7 @@
 			<jsp:include page="header.jsp"></jsp:include>
 		</c:otherwise>
 	</c:choose>
+	<input type="hidden" value="${isBookmark}" id="isBookmark">
 	<div id="total-body">
 		<div id="br-body">
 			<!-- 책이미지 -->
@@ -123,32 +124,31 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
-    function toggleBookmark() {
-        // 현재 북마크 상태 확인
-        var isCurrentlyBookmarked = ${isBookmark};
+	console.log(document.getElementById("isBookmark").value);
+	var isBookmark = JSON.parse(document.getElementById("isBookmark").value);
+	
+	function toggleBookmark() {
+	    isBookmark = !isBookmark;
 
-        // AJAX를 사용하여 서버에 북마크 상태 업데이트 요청
-        $.ajax({
-            type: "POST",
-            url: "<%=request.getContextPath()%>/bookmark",
-            data: {isbn: "${book.isbn}"},
-            success: function(response) {
-                // 서버에서 성공적으로 응답받으면 클라이언트에서 북마크 상태 업데이트
-                if (isCurrentlyBookmarked) {
-                    $("#bookmark-icon").attr("src", "<%=request.getContextPath()%>/resources/images/bookmark_icon_blank.png");
-                    alert("북마크가 해제되었습니다.");
-                } else {
-                    $("#bookmark-icon").attr("src", "<%=request.getContextPath()%>/resources/images/bookmark_icon.png");
-					alert("북마크가 추가되었습니다.");
-				}
-				// 북마크 상태 업데이트 후, isBookmark 변수 업데이트
-				isCurrentlyBookmarked = !isCurrentlyBookmarked;
-			},
-			error : function(xhr, status, error) {
-				// 에러 처리
-				console.error("북마크 상태 업데이트 오류", error);
-			}
-		});
+	    $.ajax({
+	        type: "POST",
+	        url: "<%=request.getContextPath()%>/bookmark",
+	        data: { isbn: "${book.isbn}" },
+	        success: function (response) {
+	            if (isBookmark) {
+	                $("#bookmark-icon").attr("src", "<%=request.getContextPath()%>/resources/images/bookmark_icon.png");
+	                alert("북마크가 추가되었습니다.");
+	            } else {
+	                $("#bookmark-icon").attr("src", "<%=request.getContextPath()%>/resources/images/bookmark_icon_blank.png");
+	                alert("북마크가 해제되었습니다.");
+	            }
+
+	            console.log("Bookmark status updated successfully.");
+	        },
+	        error: function (xhr, status, error) {
+	            console.error("북마크 상태 업데이트 오류", error);
+	        }
+	    });
 	}
 </script>
 </html>

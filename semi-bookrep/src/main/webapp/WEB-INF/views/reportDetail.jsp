@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
-String loginEmail = (String) session.getAttribute("loginEmail");
+String loginEmail = (String) session.getAttribute("email");
 %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +22,11 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 			<jsp:include page="header.jsp"></jsp:include>
 		</c:otherwise>
 	</c:choose>
+	
+	<input type="hidden" value="${isLike}" id="isLike">
+	<input type="hidden" value="${likeValue}" id="likeValue">
+	<input type="hidden" value="${report.userEmail}" id="reportUserEmail">
+	
 	<div id="total-body">
 		<div id="report-top">
 			<div class="r_title">${report.title}</div>
@@ -97,22 +102,8 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 			<div id="report_bottom_left">
 				<button class="delete-btn"
 					onclick="confirmDelete(${report.id}, '${report.userEmail}')">Delete</button>
-				<div class="r_like">
-					<c:choose>
-						<c:when
-							test="${likeValue > 0 && likeValue != null && userEmail eq loginEmail}">
-							<a href="javascript:void(0);" onclick="toggleLike(${report.id})">
-								<img class="like-heart" alt="좋아요O"
-								src="<%=request.getContextPath()%>/resources/images/heart_white.png">
-							</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" onclick="toggleLike(${report.id})">
-								<img class="like-heart" alt="좋아요X"
-								src="<%=request.getContextPath()%>/resources/images/heart_blank.png">
-							</a>
-						</c:otherwise>
-					</c:choose>
+				<div class="r_like" onclick="toggleLike(${report.id})">
+					<img class="like-heart" src="<%=request.getContextPath()%>/resources/images/${isLike ? 'heart_white.png' : 'heart_blank.png'}">
 					<div>${likeValue}</div>
 				</div>
 				<button class="update-btn"
@@ -158,6 +149,11 @@ String loginEmail = (String) session.getAttribute("loginEmail");
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
+var loginEmail = '<%=loginEmail%>';
+var isLike = JSON.parse(document.getElementById("isLike").value);
+var likeCnt = parseInt(document.getElementById("likeValue").value);
+var reportUserEmail = document.getElementById("reportUserEmail").value;
+
 function confirmDelete(reportId, reportUserEmail) {
     if (confirm("게시글을 삭제하시겠습니까?")) {
         location.href = 'delete?id=' + reportId + '&reportUserEmail=' + reportUserEmail;
@@ -170,22 +166,35 @@ function confirmDelete(reportId, reportUserEmail) {
 }
 
 function toggleLike(reportId) {
-    $.ajax({
-        type: "POST",
-        url: "like",
-        data: { id: reportId },
-        success: function(response) {
-            if (response.like) {
-                $(".like-heart").attr("src", "<%=request.getContextPath()%>/resources/images/heart_white.png");
-            } else {
-                $(".like-heart").attr("src", "<%=request.getContextPath()%>/resources/images/heart_blank.png");
+	
+	if (loginEmail == reportUserEmail) {
+        alert("본인 글에는 좋아요 할 수 없습니다.");
+        return;
+    }else {
+		
+    	isLike = !isLike;
+    	
+        $.ajax({
+            type: "POST",
+            url: "<%=request.getContextPath()%>/like",
+            data: { id: reportId },
+            success: function(response) {
+                if (isLike) {
+                    $(".like-heart").attr("src", "<%=request.getContextPath()%>/resources/images/heart_white.png");
+                    likeCnt = likeCnt + 1;
+                    alert("좋아요를 추가했습니다!");
+                } else {
+                    $(".like-heart").attr("src", "<%=request.getContextPath()%>/resources/images/heart_blank.png");
+                    likeCnt = likeCnt -1;
+                    alert("좋아요를 취소했습니다.");
+                }
+                $(".r_like div").text(likeCnt);
+            },
+            error: function(error) {
+                console.error("좋아요 설정 실패 : ", error);
             }
-            $(".r_like div").text(response.likeValue);
-        },
-        error: function(error) {
-            console.error("Error toggling like:", error);
-        }
-    });
+        });
+	}
 }
 </script>
 </html>
