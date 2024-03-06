@@ -56,7 +56,7 @@
 									</button>
 							</c:otherwise>
 						</c:choose>
-						<a href="/bookrep/bookmark/${userEmail}" target="_blank"> <img class="bookmark-image"
+						<a href="/bookrep/bookmark/${userEmail}"> <img class="bookmark-image"
 							class="top-line-margin" alt="bookmark"
 							src="../resources/images/bookmark_icon_black.png"
 							style="width: 30px; height: 30px;"></a>
@@ -67,10 +67,10 @@
 							<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%" target="_blank">Follower</a><span id="follower">${followerCnt}</span>
+							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%">Follower</a><span id="follower">${followerCnt}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%" target="_blank">Following</a><span id="following">${followingCnt}</span>
+							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%">Following</a><span id="following">${followingCnt}</span>
 						</div>
 					</div>
 				</div>
@@ -107,7 +107,7 @@
 										<p>${report.report.title}</p>
 										<p>${report.report.userEmail}</p>
 										<p>Like: ${report.like}</p>
-										<a href="/bookrep/report-detail?id=${report.report.id}" target="_blank">독후감
+										<a href="/bookrep/report-detail?id=${report.report.id}">독후감
 											상세보기</a>
 									</div>
 								</div>
@@ -116,7 +116,7 @@
 					</c:if>
 				</c:forEach>
 			</c:if>
-
+<c:if test="${not empty sessionItems}">
 			<div class="page">
 				<!-- 처음 버튼 -->
 				<a href="?pageNum=1" class="page-link">|◀</a>
@@ -148,6 +148,7 @@
 				<!-- 마지막 버튼 -->
 				<a href="?pageNum=${sessionItems.size()}" class="page-link">▶|</a>
 			</div>
+		</c:if>
 		</div>
 </body>
 

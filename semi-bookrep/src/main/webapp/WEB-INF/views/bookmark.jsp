@@ -6,13 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Search Results</title>
+<title>Bookmark</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/feed.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
@@ -41,11 +37,12 @@
 				<ul>
 					<c:forEach items="${bookmarkList}" var="book">
 						<li class="display">
-						<a href="/bookrep/book-detail?isbn=${book.isbn}">
+							<a href="/bookrep/book-detail?isbn=${book.isbn}">
 								${book.name} </a>
-						<a href="/bookrep/book-detail?isbn=${book.isbn}">
-						 <img src="${book.image}"></a>
-								</li>
+							<br>
+							<a href="/bookrep/book-detail?isbn=${book.isbn}">
+						 	<img src="${book.image}"></a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>

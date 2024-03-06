@@ -6,13 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Search Results</title>
+<title>Follower</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/feed.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
@@ -45,6 +41,7 @@
 								${follower.email} </a>
 						<a href="/bookrep/feed/${follower.email}">
 								${follower.name} </a>
+						<br>
 						<a href="/bookrep/feed/${follower.email}">
 						 <img src="<%=request.getContextPath()%>/resources/images/${follower.image}"></a>
 								</li>

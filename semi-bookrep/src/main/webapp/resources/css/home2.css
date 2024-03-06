@@ -11,34 +11,28 @@ body {
 	gap: 20px;
 	padding: 180px;
 	text-align: center;
-	margin-left: 170px;
 }
 
 /* 각 독후감 이미지 컨테이너 스타일 */
 .report-container {
-	text-align: center;
-	position: relative;
-	box-sizing: border-box;
-	max-width: 90%;
-	max-height: 90%;
-	margin: 0 auto;
-}
-
-.report-container img {
-	display: block;
-	margin: 0 auto; /* 이미지를 수평으로 중앙 정렬 */
-	max-width: 100%;
-	max-height: 100%;
-	z-index: -1;
-}
-
-fieldset {
-	padding: 35px;
-	width: 200px;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 35px;
+	width: 250px;
 	border-radius: 5px;
 	background-color: #918981;
 	border: solid 1px #918981;
 	color: white;
+	height: 250px;
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+.report-con {
+	
 }
 
 .report-container a {

@@ -71,7 +71,7 @@
 												<input type="hidden" name="publisher" value="${book.publisher}">
 												<input type="hidden" name="isbn" value="${book.isbn}">
 												<input type="hidden" name="image" value="${book.image}">
-												<input type="submit" value="Select">
+												<input class="select-btn" type="submit" value="Select">
 											</form>
 										</div>
 									</c:forEach>

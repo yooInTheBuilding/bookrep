@@ -10,8 +10,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/feed.css">
-<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
 <script type="text/javascript">
@@ -41,6 +39,7 @@
 						<li class="display">
 						<a href="feed/${user.email}">
 								${user.name} </a>
+								<br>
 						<a href="feed/${user.email}">
 								<img src="<%=request.getContextPath()%>/resources/images/${user.image}"> </a>
 						</li>
@@ -75,6 +74,7 @@
 						<li class="display">
 							<a href="book-detail?isbn=${book.isbn}">
 								${book.name} </a>
+								<br>
 							<a href="book-detail?isbn=${book.isbn}">
 								<img src="${book.image}"> </a>
 						</li>

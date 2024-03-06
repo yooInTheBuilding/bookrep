@@ -46,7 +46,7 @@
 				<input type="text" class="write-input" name="title" placeholder="Report_Title" required>
 				<input type="text" class="write-input" name="bookIsbn" placeholder="Book_ISBN"
 					value="${not empty book ? book.isbn : 'No Book ISBN'}" readonly="readonly">
-				<input type="text" class="write-input report-input" name="content" placeholder="Report_Content">
+				<textarea  class="write-input report-input" name="content" placeholder="Report_Content"></textarea>
 				<input type="checkbox" name="publicBool" checked="checked">Public
 				<div class="btn-area">
 					<input type="submit" class="btn-write" value="Write" onclick="msg()" required>
