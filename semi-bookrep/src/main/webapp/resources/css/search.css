@@ -19,7 +19,7 @@ h1 {
 /* Container */
 .container {
     max-width: 960px;
-    margin: 50px 300px;
+    margin: 50px 165px;
     display: flex; /* For potential header & search bar */
     flex-direction: column; /* Stack sections vertically */
     align-items: center;

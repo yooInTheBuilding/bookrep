@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 <link rel="stylesheet" href="resources/css/page.css">
 <link rel="stylesheet" href="resources/css/home2.css">
 </head>
@@ -40,7 +40,7 @@
 			<c:if test="${page.pageNum eq currentPageNum}">
 				<div id="report-container">
 					<c:forEach var="report" items="${page.objectList}">
-						<fieldset>
+						<div class="report-con">
 							<div class="report-container">
 								<a href="/bookrep/feed/${report.userEmail}"><p>${report.userEmail}</p></a>
 								<div class="report-detail"
@@ -49,7 +49,7 @@
 									<p>${report.content}</p>
 								</div>
 							</div>
-						</fieldset>
+						</div>
 					</c:forEach>
 				</div>
 			</c:if>
