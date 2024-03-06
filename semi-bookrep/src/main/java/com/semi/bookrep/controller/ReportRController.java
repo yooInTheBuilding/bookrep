@@ -27,17 +27,27 @@ public class ReportRController {
 	private ReportRService reportRService; 
 	
 	@GetMapping("report-detail")
-	public String showReportDetail(@RequestParam("id") Long id, Model model) {
+	public String showReportDetail(@RequestParam("id") Long id, HttpSession session,Model model) {
 		log.info("showReportDetail()");
+		
+		String loggedInUserEmail = (String) session.getAttribute("email");
 		
 		ReportDTO reportDTO = reportRService.getReportDetailByReportId(id);
 		List<CommentDTO> commentList = reportRService.getCommentByReportId(id);
 		List<PageDTO> pageList = MainUtil.setPaging(commentList, 6);
 		Integer likeValue = reportRService.getLikeValueByReportId(id);
+		Integer isLike = reportRService.isLike(loggedInUserEmail, id);
+		
+		boolean isLikeBool = false;
+		if (isLike == 1) {
+			isLikeBool = true;
+		}
 		
 		model.addAttribute("report", reportDTO);
 		model.addAttribute("commentList", pageList);
 		model.addAttribute("likeValue", likeValue);
+		model.addAttribute("isLike", isLikeBool);
+		
 		
 		return "reportDetail";
 	}
