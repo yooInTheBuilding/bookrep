@@ -1,5 +1,6 @@
 @charset "UTF-8";
-body{
+
+body {
 	background-color: #F5F5F5;
 }
 
@@ -46,19 +47,21 @@ body{
 }
 
 .user-name {
-	width: 200px; display : flex;
+	width: 200px;
+	display: flex;
 	align-items: center;
 	display: flex;
 }
 
-#followBn {
-	background-color: white;
-	color: black;
-}
-
-#unfollowbn {
-	background-color: #707070;
-	color: white;
+#followBtn {
+	width: 75px;
+	margin-left: 10px;
+	padding: 9px 12px;
+	background-color: #555;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 .bottom-line {
@@ -72,6 +75,21 @@ body{
 
 .bottom-line-margin {
 	margin-right: 20%;
+}
+
+.bottom-line-margin a {
+	text-decoration: none;
+	color: black;
+}
+
+.modify-btn {
+	margin-left: 10px;
+	padding: 9px 12px;
+	background-color: #555;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 /* 이 밑에는 독후감 ----------------------------------- */

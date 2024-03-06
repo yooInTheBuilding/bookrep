@@ -43,7 +43,8 @@
 						<fieldset>
 							<div class="report-container">
 								<a href="/bookrep/feed/${report.userEmail}"><p>${report.userEmail}</p></a>
-								<div class="report-detail" onclick="moveToReportDetail(${report.id})">
+								<div class="report-detail"
+									onclick="moveToReportDetail(${report.id})">
 									<p>${report.title}</p>
 									<p>${report.content}</p>
 								</div>
@@ -55,39 +56,41 @@
 		</c:forEach>
 	</c:if>
 
-	<div class="page">
-		<!-- 처음 버튼 -->
-		<a href="?pageNum=1" class="page-link">|◀</a>
+	<c:if test="${not empty sessionItems}">
 
-		<!-- 이전 버튼 -->
-		<c:if test="${currentPageNum > 3}">
-			<a href="?pageNum=${currentPageNum - 5}" class="page-link">이전</a>
-		</c:if>
+		<div class="page">
+			<!-- 처음 버튼 -->
+			<a href="?pageNum=1" class="page-link">|◀</a>
 
-		<!-- 페이지 번호 5개씩 표시 -->
-		<c:forEach var="i"
-			begin="${currentPageNum - 2 > 0 ? currentPageNum - 2 : 1}"
-			end="${currentPageNum + 2 < sessionItems.size() ? currentPageNum + 2 : sessionItems.size()}">
-			<c:choose>
-				<c:when test="${i eq currentPageNum}">
-					<span class="page-link">${i}</span>
-				</c:when>
-				<c:otherwise>
-					<a href="?pageNum=${i}" class="page-link">${i}</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
+			<!-- 이전 버튼 -->
+			<c:if test="${currentPageNum > 3}">
+				<a href="?pageNum=${currentPageNum - 5}" class="page-link">이전</a>
+			</c:if>
 
-		<!-- 다음 버튼 -->
-		<c:if test="${currentPageNum + 2 < sessionItems.size()}">
-			<a href="?pageNum=${currentPageNum + 3}" class="page-link">다음</a>
-		</c:if>
+			<!-- 페이지 번호 5개씩 표시 -->
+			<c:forEach var="i"
+				begin="${currentPageNum - 2 > 0 ? currentPageNum - 2 : 1}"
+				end="${currentPageNum + 2 < sessionItems.size() ? currentPageNum + 2 : sessionItems.size()}">
+				<c:choose>
+					<c:when test="${i eq currentPageNum}">
+						<span class="page-link">${i}</span>
+					</c:when>
+					<c:otherwise>
+						<a href="?pageNum=${i}" class="page-link">${i}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 
-		<!-- 마지막 버튼 -->
-		<a href="?pageNum=${sessionItems.size()}" class="page-link">▶|</a>
-	</div>
+			<!-- 다음 버튼 -->
+			<c:if test="${currentPageNum + 2 < sessionItems.size()}">
+				<a href="?pageNum=${currentPageNum + 3}" class="page-link">다음</a>
+			</c:if>
+
+			<!-- 마지막 버튼 -->
+			<a href="?pageNum=${sessionItems.size()}" class="page-link">▶|</a>
+		</div>
+	</c:if>
 </body>
-
 <script type="text/javascript">
 function moveToReportDetail(reportId) {
 	location.href = "/bookrep/report-detail?id=" + reportId;
