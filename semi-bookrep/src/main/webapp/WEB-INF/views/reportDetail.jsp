@@ -9,7 +9,7 @@ String loginEmail = (String) session.getAttribute("email");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Report Detail</title>
+<title>독후감 상세</title>
 <link rel="stylesheet" href="resources/css/page.css">
 <link rel="stylesheet" href="resources/css/reportDetail.css">
 </head>
@@ -31,8 +31,8 @@ String loginEmail = (String) session.getAttribute("email");
 		<div id="report-top">
 			<div class="r_title">${report.title}</div>
 			<div>
-				<div class="r_user">${report.userEmail}</div>
-				<div class="r_date">${report.time}</div>
+				<div class="r_user">글쓴이: ${report.userEmail}</div>
+				<div class="r_date">작성시간: ${report.time}</div>
 			</div>
 		</div>
 		<br>
@@ -101,13 +101,13 @@ String loginEmail = (String) session.getAttribute("email");
 		<div id="report-bottom">
 			<div id="report_bottom_left">
 				<button class="delete-btn"
-					onclick="confirmDelete(${report.id}, '${report.userEmail}')">Delete</button>
+					onclick="confirmDelete(${report.id}, '${report.userEmail}')">삭제</button>
 				<div class="r_like" onclick="toggleLike(${report.id})">
 					<img class="like-heart" src="<%=request.getContextPath()%>/resources/images/${isLike ? 'heart_white.png' : 'heart_blank.png'}">
 					<div>${likeValue}</div>
 				</div>
 				<button class="update-btn"
-					onclick="location.href='/bookrep/report-update?id=${report.id}'">Update</button>
+					onclick="location.href='/bookrep/report-update?id=${report.id}'">수정</button>
 			</div>
 			<div id="report_bottom_right">
 				<div class="page">

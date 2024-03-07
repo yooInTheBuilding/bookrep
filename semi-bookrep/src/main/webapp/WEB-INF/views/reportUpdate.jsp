@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Report Detail</title>
+    <title>독후감 수정</title>
     <link rel="stylesheet" href="resources/css/page.css">
     <link rel="stylesheet" href="resources/css/reportUpdate.css">
 </head>
@@ -25,17 +25,17 @@
                     <input type="hidden" name="id" value="${report.id}">
                     <input type="hidden" name="userEmail" value="${sessionScope.email}">
                     <input type="hidden" name="bookIsbn" value="${report.bookIsbn}">
-                    <label for="title">Title:</label> 
+                    <label for="title">제목:</label> 
                     <input type="text" id="title" name="title" value="${report.title}" required>
                 </div>
                 <div id="report-body">
-                    <label for="content">Content:</label>
+                    <label for="content">내용:</label>
                     <textarea id="content" name="content" rows="5" required>${report.content}</textarea>
                     <input type="hidden" name="publicBool" value="${report.publicBool}">
                     <br>
                 </div>
                 <br>
-                <button type="submit">Update</button>
+                <button type="submit">수정완료</button>
             </form>
         </div>
     </div>

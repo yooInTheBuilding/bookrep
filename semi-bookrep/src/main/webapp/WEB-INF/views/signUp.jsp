@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="resources/css/signUp.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -26,7 +26,7 @@
 		<fieldset class="out-line-box">
 			<div class="sign-in-box">
 
-				<h1>SignUp</h1>
+				<h1>회원가입</h1>
 
 				<form id="signup-form" action="sign-up" method="post">
 					<p>
@@ -38,7 +38,7 @@
 					<p>
 					<div class="int-area">
 						<input type="text" name="name" id="name" autocomplete="off"
-							placeholder="name" required>
+							placeholder="이름" required>
 					</div>
 
 					<p>
@@ -49,7 +49,7 @@
 
 					<p>
 					<div class="signUp-page-button">
-						<button>SignUp</button>
+						<button>회원가입</button>
 					</div>
 				</form>
 			</div>
@@ -60,7 +60,7 @@
 		<fieldset>
 			<div class="sign-up-link">
 				<p>
-					Already have an account? <a href="/bookrep/sign-in">Sign In</a>
+					이미 계정이 있나요? <a href="/bookrep/sign-in">로그인</a>
 				<p>
 			</div>
 		</fieldset>

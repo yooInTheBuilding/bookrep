@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보 수정</title>
 <link rel="stylesheet" href="resources/css/update.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -26,7 +26,7 @@
 		<div class="out-line-box">
 			<fieldset class="update-frm">
 
-				<h1>modify</h1>
+				<h1>회원정보 수정</h1>
 
 				<form id="userInfo" method="post" enctype="multipart/form-data">
 					<p>
@@ -63,8 +63,8 @@
 
 				<p>
 				<div class="btn-box">
-					<button type="button" onclick="updateAlert()" name="update-btn">update</button>
-					<button type="button" onclick="resignAlert()" name="resign-btn">resign</button>
+					<button type="button" onclick="updateAlert()" name="update-btn">수정완료</button>
+					<button type="button" onclick="resignAlert()" name="resign-btn">회원탈퇴</button>
 				</div>
 				<p>
 			</fieldset>

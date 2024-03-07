@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Following</title>
+<title>팔로잉 목록</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
@@ -29,9 +29,9 @@
 	<div class="container">
 
 		<div class="section">
-			<h2>Following</h2>
+			<h2>팔로잉</h2>
 			<c:if test="${empty followingList}">
-				<p>No following found.</p>
+				<p>해당 유저의 팔로잉이 존재하지 않습니다</p>
 			</c:if>
 			<div class="page-container">
 				<ul>

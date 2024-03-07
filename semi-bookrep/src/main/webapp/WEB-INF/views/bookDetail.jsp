@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book Detail</title>
+<title>책 상세 정보</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/page.css">
 <link rel="stylesheet"

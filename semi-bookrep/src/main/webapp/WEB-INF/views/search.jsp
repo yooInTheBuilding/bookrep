@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Search Results</title>
+<title>검색결과</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
@@ -25,13 +25,13 @@
 		</c:otherwise>
 	</c:choose>
 
-	<h1 id="search-title">Search Results for "${keyword}"</h1>
+	<h1 id="search-title">"${keyword}"에 대한 검색결과</h1>
 	<div class="container">
 
 		<div class="section">
-			<h2>Users</h2>
+			<h2>유저</h2>
 			<c:if test="${empty userList}">
-				<p>No users found.</p>
+				<p>해당 유저가 존재하지 않습니다</p>
 			</c:if>
 			<div class="page-container">
 				<ul>
@@ -64,9 +64,9 @@
 	</div>
 	<div class="container">
 		<div class="section">
-			<h2>Books</h2>
+			<h2>도서</h2>
 			<c:if test="${empty bookList}">
-				<p>No books found.</p>
+				<p>해당 도서가 존재하지 않습니다</p>
 			</c:if>
 			<div class="page-container">
 				<ul>

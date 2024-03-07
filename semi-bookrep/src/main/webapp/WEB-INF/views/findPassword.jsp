@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
 <link rel="stylesheet" href="resources/css/findPassword.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -42,18 +42,18 @@
 					<p>
 					<div class="int-area">
 						<input type="text" name="name" id="name" autocomplete="off"
-							placeholder="name" required>
+							placeholder="이름" required>
 					</div>
 
 					<p>
 					<div class="findPw-page-button">
-						<button type="button" onclick="findPassword()">find password</button>
+						<button type="button" onclick="findPassword()">비밀번호 찾기</button>
 					</div>
 				</form>
 
 				<h5>or</h5>
 
-				<a href="/bookrep/sign-up">create new Account</a>
+				<a href="/bookrep/sign-up">회원가입</a>
 				<p>
 			</div>
 
@@ -63,7 +63,7 @@
 		<fieldset>
 			<div class="back-signin-link">
 				<p>
-					<a href="/bookrep/sign-in">back to signIn</a>
+					<a href="/bookrep/sign-in">로그인</a>
 				<p>
 			</div>
 		</fieldset>
