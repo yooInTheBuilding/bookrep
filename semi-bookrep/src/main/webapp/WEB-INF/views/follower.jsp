@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Follower</title>
+<title>팔로워 목록</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
@@ -29,9 +29,9 @@
 	<div class="container">
 
 		<div class="section">
-			<h2>Follower</h2>
+			<h2>팔로워</h2>
 			<c:if test="${empty followerList}">
-				<p>No follower found.</p>
+				<p>해당 유저의 팔로워가 존재하지 않습니다</p>
 			</c:if>
 			<div class="page-container">
 				<ul>

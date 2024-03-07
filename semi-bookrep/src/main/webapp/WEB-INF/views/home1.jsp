@@ -16,7 +16,7 @@ $(function() {
 </script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 하세요</title>
 <style>
 body {
 	background-color: #f5f5f5;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 <link rel="stylesheet" href="resources/css/signIn.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -18,7 +18,7 @@
 		<fieldset class="out-line-box">
 			<div class="sign-in-box">
 
-				<h1>SignIn</h1>
+				<h1>로그인</h1>
 
 				<form action="/bookrep/sign-in" method="post">
 					<p>
@@ -35,13 +35,13 @@
 
 					<p>
 					<div class="login-page-button">
-						<button>Login</button>
+						<button>로그인</button>
 			</div> 
 				</form>
 
 				<h5>or</h5>
 
-				<a href="/bookrep/find-password">Find Password</a>
+				<a href="/bookrep/find-password">비밀번호 찾기</a>
 				<p>
 			</div>
 
@@ -51,7 +51,7 @@
 		<fieldset>
 			<div class="sign-up-link">
 				<p>
-					Don't have an account? <a href="/bookrep/sign-up">Sign Up</a> 
+					계정이 없나요? <a href="/bookrep/sign-up">회원가입</a> 
 				<p>
 			</div>
 		</fieldset>

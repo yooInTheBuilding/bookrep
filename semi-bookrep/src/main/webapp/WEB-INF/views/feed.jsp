@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Feed</title>
+<title>피드</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/feed.css">
 <link rel="stylesheet"
@@ -45,13 +45,13 @@
 						<div class="user-name">${userEmail}</div>
 						<c:choose>
 							<c:when test="${isCurrentUser}">
-								<button class="modify-btn" id="modifyBtn" onclick="showModify()">Modifying</button>
+								<button class="modify-btn" id="modifyBtn" onclick="showModify()">회원정보 수정</button>
 							</c:when>
 							<c:otherwise>
 								<button id="followBtn">
 									<c:choose>
-									<c:when test="${isFollowing}">Unfollow</c:when>
-									<c:when test="${!isFollowing}">Follow</c:when>
+									<c:when test="${isFollowing}">언팔로우</c:when>
+									<c:when test="${!isFollowing}">팔로우</c:when>
 									</c:choose>
 									</button>
 							</c:otherwise>
@@ -67,10 +67,10 @@
 							<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%">Follower</a><span id="follower">${followerCnt}</span>
+							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%">팔로워</a><span id="follower">${followerCnt}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%">Following</a><span id="following">${followingCnt}</span>
+							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%">팔로잉</a><span id="following">${followingCnt}</span>
 						</div>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
 									<div class="overlay">
 										<p>${report.report.title}</p>
 										<p>${report.report.userEmail}</p>
-										<p>Like: ${report.like}</p>
+										<p>좋아요 수: ${report.like}</p>
 										<a href="/bookrep/report-detail?id=${report.report.id}">독후감
 											상세보기</a>
 									</div>
@@ -171,14 +171,14 @@
 			if(isFollowing){
 				unfollow(userEmail);
 				isFollowing = false;
-				button.innerText = 'Follow';
+				button.innerText = '팔로우';
 				followerCount = followerCount - 1;
 				follower.innerText = followerCount;
 				
 			}else{
 				follow(userEmail);
 				isFollowing = true;
-				button.innerText = 'Unfollow';
+				button.innerText = '언팔로우';
 				followerCount = followerCount + 1;
 				follower.innerText = followerCount;
 			}

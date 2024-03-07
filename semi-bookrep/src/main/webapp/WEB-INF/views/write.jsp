@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Write</title>
+<title>글쓰기</title>
 <link rel="stylesheet" href="resources/css/write.css">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
 	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -37,19 +37,19 @@
 			<hr>
 			<h2 class="form-header">독후감 작성</h2>
 			<div>
-				<input type="text" class="write-input" name="title" placeholder="Book_Name" readonly="readonly"
+				<input type="text" class="write-input" name="title" placeholder="도서명" readonly="readonly"
 				value="${not empty book ? book.name : 'No Book Title'}">
 			</div>
 			<br>
 			<form action="save" method="post" accept-charset="UTF-8">
 				<input type="hidden" name="userEmail" value="${sessionScope.email}">
-				<input type="text" class="write-input" name="title" placeholder="Report_Title" required>
-				<input type="text" class="write-input" name="bookIsbn" placeholder="Book_ISBN"
+				<input type="text" class="write-input" name="title" placeholder="독후감 제목(필수)" required>
+				<input type="text" class="write-input" name="bookIsbn" placeholder="ISBN"
 					value="${not empty book ? book.isbn : 'No Book ISBN'}" readonly="readonly">
-				<textarea  class="write-input report-input" name="content" placeholder="Report_Content"></textarea>
-				<input type="checkbox" name="publicBool" checked="checked">Public
+				<textarea  class="write-input report-input" name="content" placeholder="내용(필수)"></textarea>
+				<input type="checkbox" name="publicBool" checked="checked">공개
 				<div class="btn-area">
-					<input type="submit" class="btn-write" value="Write" onclick="msg()" required>
+					<input type="submit" class="btn-write" value="작성" onclick="msg()" required>
 				</div>
 			</form>
 		</div>

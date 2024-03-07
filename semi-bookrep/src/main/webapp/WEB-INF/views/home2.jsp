@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>어서오세요</title>
 <link rel="stylesheet" href="resources/css/page.css">
 <link rel="stylesheet" href="resources/css/home2.css">
 </head>

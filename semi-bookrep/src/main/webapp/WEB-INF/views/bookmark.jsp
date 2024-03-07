@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bookmark</title>
+<title>북마크</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/search.css">
 <link rel="stylesheet"
@@ -29,9 +29,9 @@
 	<div class="container">
 
 		<div class="section">
-			<h2>Bookmark</h2>
+			<h2>북마크</h2>
 			<c:if test="${empty bookmarkList}">
-				<p>No bookmark found.</p>
+				<p>북마크한 도서가 없습니다</p>
 			</c:if>
 			<div class="page-container">
 				<ul>

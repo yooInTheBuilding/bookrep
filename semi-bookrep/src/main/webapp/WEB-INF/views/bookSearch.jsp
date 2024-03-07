@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book Search</title>
+<title>책 검색</title>
 <link rel="stylesheet" href="resources/css/page.css">
 <link rel="stylesheet" href="resources/css/bookSearch.css">
 </head>
@@ -71,7 +71,7 @@
 												<input type="hidden" name="publisher" value="${book.publisher}">
 												<input type="hidden" name="isbn" value="${book.isbn}">
 												<input type="hidden" name="image" value="${book.image}">
-												<input class="select-btn" type="submit" value="Select">
+												<input class="select-btn" type="submit" value="선택">
 											</form>
 										</div>
 									</c:forEach>

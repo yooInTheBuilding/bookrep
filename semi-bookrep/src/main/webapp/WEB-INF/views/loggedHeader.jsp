@@ -29,7 +29,7 @@
 			</div>
 			
 			<div class="write-button">
-				<button onclick="moveToWrite()">Write</button>
+				<button onclick="moveToWrite()">글 쓰기</button>
 			</div>
 
 			<div class="logo">
@@ -41,7 +41,7 @@
 				<div class="search-box">
 					<form action="/bookrep/search" method="GET">
 						<input type="text" name="keyword" placeholder="검색어를 입력하세요">
-						<button type="submit" class="search">search</button>
+						<button type="submit" class="search">검색</button>
 					</form>
 				</div>
 				<div class="logout-button">
