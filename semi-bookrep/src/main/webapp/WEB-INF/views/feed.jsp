@@ -67,10 +67,10 @@
 							<span style="margin-right: 10%">Posts</span><span>${reportValue}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/follower/${userEmail}" style="margin-right: 10%">팔로워</a><span id="follower">${followerCnt}</span>
+							<a class="f-a" href="/bookrep/follower/${userEmail}" style="margin-right: 10%">팔로워</a><span id="follower">${followerCnt}</span>
 						</div>
 						<div class="bottom-line-margin">
-							<a href="/bookrep/following/${userEmail}" style="margin-right: 10%">팔로잉</a><span id="following">${followingCnt}</span>
+							<a class="f-a" href="/bookrep/following/${userEmail}" style="margin-right: 10%">팔로잉</a><span id="following">${followingCnt}</span>
 						</div>
 					</div>
 				</div>

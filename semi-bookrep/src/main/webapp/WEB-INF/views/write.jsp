@@ -41,12 +41,12 @@
 				value="${not empty book ? book.name : 'No Book Title'}">
 			</div>
 			<br>
-			<form action="save" method="post" accept-charset="UTF-8">
+			<form class="form-write" action="save" method="post" accept-charset="UTF-8">
 				<input type="hidden" name="userEmail" value="${sessionScope.email}">
 				<input type="text" class="write-input" name="title" placeholder="독후감 제목(필수)" required>
 				<input type="text" class="write-input" name="bookIsbn" placeholder="ISBN"
 					value="${not empty book ? book.isbn : 'No Book ISBN'}" readonly="readonly">
-				<textarea  class="write-input report-input" name="content" placeholder="내용(필수)"></textarea>
+				<textarea  class="write-input report-input" name="content" placeholder="내용(필수)" required></textarea>
 				<input type="checkbox" name="publicBool" checked="checked">공개
 				<div class="btn-area">
 					<input type="submit" class="btn-write" value="작성" onclick="msg()" required>

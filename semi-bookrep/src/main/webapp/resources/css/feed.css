@@ -74,14 +74,17 @@ body {
 }
 
 .bottom-line-margin {
-	margin-right: 20%;
+	margin-right: 15%;
+	inline-size: -webkit-fill-available;
 }
 
 .bottom-line-margin a {
 	text-decoration: none;
-	color: black;
+	color: #999;
 }
-
+.bottom-line-margin .f-a{
+	padding: 0px 0px;
+}
 .modify-btn {
 	margin-left: 10px;
 	padding: 9px 12px;
