@@ -64,9 +64,8 @@ public class FeedService {
 		            map.put("like", likeValue);
 		            summaryList.add(map);
 				}
-	            
-	            log.info("잘 가져옴");
 	         }
+	            log.info("잘 가져옴");
 	      } catch (Exception e) {
 	         log.info("이미지 못 받아옴.");
 	         e.printStackTrace();

@@ -93,7 +93,7 @@ public class SignController {
 		return "findPassword";
 	}
 	
-	@PostMapping("find-password")
+	@PostMapping(value = "find-password", produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String findPassword(@RequestParam("email") String email, @RequestParam("name") String name) {
 		log.info("findPassword");

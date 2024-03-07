@@ -88,3 +88,7 @@ hr {
 	cursor: pointer;
 	border-radius: 5px;
 }
+
+textarea {
+	font-family: Arial, sans-serif;
+}

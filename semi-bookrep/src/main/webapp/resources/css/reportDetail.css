@@ -82,8 +82,16 @@
 }
 
 #report_bottom_left {
-	display: flex;
+	width: 350px; display : flex;
 	align-items: center;
+	display: flex;
+	position: relative;
+	left: 35px;
+}
+
+#report_bottom_right {
+	position: relative;
+	left: 40px;
 }
 
 .r_like img {
@@ -136,10 +144,12 @@
 	right: 0;
 	font-size: 12px;
 }
-.c_top a{
+
+.c_top a {
 	font-size: 15px;
 }
-.c_content{
+
+.c_content {
 	margin: 5px;
 }
 
