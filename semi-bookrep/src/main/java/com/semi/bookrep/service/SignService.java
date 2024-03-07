@@ -107,6 +107,8 @@ public class SignService {
 		}
 		if (upFile != null && !upFile.isEmpty() && !upFile.isBlank()) {
 			fileUpload(files, session, userDTO);
+		}else {
+			userDTO.setImage("noimage.png");
 		}
 		
 		userDao.modify(userDTO);
