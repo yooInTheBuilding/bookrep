@@ -46,4 +46,7 @@
 	<delete id="resign" parameterType="java.lang.String">
 		DELETE FROM user WHERE user_email = #{email}
 	</delete>
+	<select id="getNameByEmail" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT user_name FROM user WHERE user_email = #{userEmail}
+	</select>
 </mapper>

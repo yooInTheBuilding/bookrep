@@ -100,4 +100,9 @@ public class FeedService {
 		
 		return userImage;
 	}
+
+	public String getNameByEmail(String userEmail) {
+		
+		return userDao.getNameByEmail(userEmail);
+	}
 }

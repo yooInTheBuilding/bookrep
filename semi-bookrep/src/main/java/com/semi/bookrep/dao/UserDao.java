@@ -32,6 +32,8 @@ public interface UserDao {
 
 	void resign(String email);
 
+	String getNameByEmail(String userEmail);
+
 
 	
 }
