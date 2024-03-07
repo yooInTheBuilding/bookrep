@@ -61,6 +61,7 @@
 							src="../resources/images/bookmark_icon_black.png"
 							style="width: 30px; height: 30px;"></a>
 					</div>
+					<div class="user-name">${name}</div>
 					<br>
 					<div class="bottom-line">
 						<div class="bottom-line-margin">

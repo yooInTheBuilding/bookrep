@@ -41,6 +41,9 @@
 								${user.name} </a>
 								<br>
 						<a href="feed/${user.email}">
+								${user.email} </a>
+								<br>
+						<a href="feed/${user.email}">
 								<img src="<%=request.getContextPath()%>/resources/images/${user.image}"> </a>
 						</li>
 					</c:forEach>
