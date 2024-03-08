@@ -23,14 +23,6 @@ public class HomeTest {
 	@Autowired
 	private HomeService homeService;
 	
-	@Test
-	void getReportToHomeTest(){
-		List<ReportDTO> reportList = homeService.getReportToHome("ing06047");
-		for (ReportDTO reportDTO : reportList) {
-			System.out.println("title" + reportDTO.getTitle());
-			System.out.println("writer: " + reportDTO.getUserEmail());
-			System.out.println("time: " + reportDTO.getTime());
-		}
-	}
+	
 
 }

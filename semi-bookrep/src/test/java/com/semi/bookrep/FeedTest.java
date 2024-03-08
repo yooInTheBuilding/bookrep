@@ -23,11 +23,7 @@ class FeedTest {
 	
 	String userEmail = "aaa@aaa.com";
 
-	@Test
-	void getReportSummaryByIdTtest() {
-		List<PageDTO> testItems = feedService.getReportSummaryById(userEmail);
-		System.out.println(testItems);
-	}
+	
 	
 	@Test
 	void getReportValueByIdTest() {

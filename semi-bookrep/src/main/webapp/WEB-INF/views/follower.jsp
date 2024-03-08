@@ -58,7 +58,7 @@
 				class="page-link">이전</a>
 		</c:if>
 		<!-- 다음 버튼 -->
-		<c:if test="${currentPageNum * 6 < totalFollowingSize}">
+		<c:if test="${currentPageNum * 6 < totalFollowerSize}">
 			<a
 				href="?pageNum=${currentPageNum + 1}"
 				class="page-link">다음</a>
